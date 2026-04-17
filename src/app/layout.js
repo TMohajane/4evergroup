@@ -2,6 +2,69 @@ import "./globals.css";
 import SiteHeader from "@/components/site-header";
 import WhatsAppButton from "@/components/whatsapp-button";
 import PageTransition from "@/components/page-transition";
+import ScrollProgress from "@/components/scroll-progress";
+
+function WhatsAppIcon({ className = "h-5 w-5" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
+      <path
+        fill="currentColor"
+        d="M20.52 3.48A11.83 11.83 0 0 0 12.04 0 11.96 11.96 0 0 0 1.64 17.88L0 24l6.28-1.64a11.96 11.96 0 0 0 5.74 1.46h.01C18.63 23.82 24 18.45 24 11.84c0-3.17-1.24-6.15-3.48-8.36ZM12.03 21.8h-.01a9.95 9.95 0 0 1-5.07-1.38l-.36-.21-3.73.97.99-3.64-.23-.37a9.95 9.95 0 0 1-1.54-5.33c0-5.5 4.47-9.97 9.97-9.97 2.67 0 5.18 1.04 7.06 2.92a9.9 9.9 0 0 1 2.92 7.05c0 5.5-4.48 9.97-9.99 9.97Zm5.46-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.46-.15-.66.15s-.76.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.66-1.59-.9-2.17-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.52.08-.8.38-.27.3-1.05 1.03-1.05 2.52 0 1.49 1.08 2.93 1.23 3.13.15.2 2.1 3.2 5.08 4.48.71.31 1.27.5 1.7.64.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35Z"
+      />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = "h-5 w-5" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
+      <defs>
+        <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#feda75" />
+          <stop offset="45%" stopColor="#d62976" />
+          <stop offset="100%" stopColor="#4f5bd5" />
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#igGradient)"
+        d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm8.4 1.8h-8.3A4.05 4.05 0 0 0 3.8 7.85v8.3a4.05 4.05 0 0 0 4.05 4.05h8.3a4.05 4.05 0 0 0 4.05-4.05v-8.3a4.05 4.05 0 0 0-4.05-4.05ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Zm5.2-2a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2Z"
+      />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className = "h-5 w-5" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
+      <path
+        fill="#1877F2"
+        d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.03 4.39 11.03 10.13 11.93v-8.44H7.08v-3.5h3.05V9.39c0-3.03 1.79-4.71 4.54-4.71 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.5 0-1.97.94-1.97 1.9v2.28h3.35l-.54 3.5h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"
+      />
+    </svg>
+  );
+}
+
+function TikTokIcon({ className = "h-5 w-5" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
+      <path
+        fill="currentColor"
+        d="M20.02 7.56a6.37 6.37 0 0 1-3.72-1.2v5.47a6.06 6.06 0 1 1-5.24-6.01v3.13a2.93 2.93 0 1 0 2.11 2.88V0h3.13a6.36 6.36 0 0 0 3.72 5.54v2.02Z"
+      />
+    </svg>
+  );
+}
+
+function MapPinIcon({ className = "h-5 w-5" }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
+      <path
+        fill="currentColor"
+        d="M12 2a7 7 0 0 0-7 7c0 5.4 7 13 7 13s7-7.6 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"
+      />
+    </svg>
+  );
+}
 
 export const metadata = {
   title: "Forever Glow",
@@ -12,53 +75,95 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full bg-[#f5f0eb] text-[#1a0533]">
+        <ScrollProgress />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
-          <footer className="bg-[#1a0533] px-4 py-12 text-[#c5a355] sm:px-8 lg:px-12">
+          <footer className="bg-[#1a0533] px-4 py-14 text-[#c5a355] sm:px-8 lg:px-12">
             <div className="mx-auto w-full max-w-7xl">
-              <div className="grid gap-8 md:grid-cols-[1.1fr_1fr_1fr]">
+              <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
                 <div>
-                  <p className="hero-display text-2xl font-semibold tracking-tight">Forever Glow</p>
-                  <p className="mt-3 text-sm text-[#dec787]">Reg: 2020 / 540529 / 07</p>
+                  <p className="hero-display text-3xl font-semibold tracking-tight text-[#f6e7c2]">Forever Glow</p>
+                  <p className="mt-4 max-w-xs text-sm leading-7 text-[#dec787]">Radiant skincare essentials designed for confident, everyday glow.</p>
+                  <div className="mt-5 flex items-center gap-3">
+                    <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] transition duration-300 hover:-translate-y-0.5 hover:scale-105">
+                      <WhatsAppIcon className="h-5 w-5 text-white" />
+                    </a>
+                    <a href="#" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white transition duration-300 hover:-translate-y-0.5 hover:scale-105">
+                      <InstagramIcon />
+                    </a>
+                    <a href="#" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white transition duration-300 hover:-translate-y-0.5 hover:scale-105">
+                      <FacebookIcon />
+                    </a>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Quick Links</p>
+                  <ul className="mt-4 space-y-3 text-sm text-[#dec787]">
+                    {[
+                      { href: "#about", label: "About" },
+                      { href: "#products", label: "Products" },
+                      { href: "#ingredients", label: "Ingredients" },
+                      { href: "#order", label: "How to Order" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f6e7c2]">
+                          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                          <span>{item.label}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Contact</p>
-                  <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 text-[#c5a355] transition hover:text-[#f4ddb0]">
-                    <span aria-hidden="true">💬</span>
+                  <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 text-sm text-[#dec787] transition hover:text-[#f6e7c2]">
+                    <WhatsAppIcon className="h-5 w-5 text-[#25D366]" />
                     <span>071 776 8306</span>
                   </a>
-                  <p className="mt-3 flex items-center gap-2 text-[#dec787]">
-                    <span aria-hidden="true">📍</span>
-                    <span>Midrand / Joburg</span>
+                  <p className="mt-3 flex items-center gap-2 text-sm text-[#dec787]">
+                    <MapPinIcon className="h-5 w-5 text-[#c5a355]" />
+                    <span>Midrand &amp; Joburg, South Africa</span>
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Social</p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <a href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#c5a355]/50 text-lg transition hover:border-[#f4ddb0] hover:text-[#f4ddb0]" aria-label="Instagram">
-                      <span aria-hidden="true">📸</span>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Follow Us</p>
+                  <div className="mt-4 space-y-3 text-sm text-[#dec787]">
+                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f6e7c2]" aria-label="Instagram">
+                      <InstagramIcon className="h-5 w-5" />
+                      <span>Instagram</span>
                     </a>
-                    <a href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#c5a355]/50 text-lg transition hover:border-[#f4ddb0] hover:text-[#f4ddb0]" aria-label="Facebook">
-                      <span aria-hidden="true">👍</span>
+                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f6e7c2]" aria-label="Facebook">
+                      <FacebookIcon className="h-5 w-5" />
+                      <span>Facebook</span>
                     </a>
-                    <a href="#" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#c5a355]/50 text-lg transition hover:border-[#f4ddb0] hover:text-[#f4ddb0]" aria-label="TikTok">
-                      <span aria-hidden="true">🎵</span>
+                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f6e7c2]" aria-label="TikTok">
+                      <TikTokIcon className="h-5 w-5 text-white" />
+                      <span>TikTok</span>
                     </a>
                   </div>
                 </div>
               </div>
 
-              <p className="mt-10 border-t border-[#c5a355]/25 pt-6 text-sm text-[#dec787]">
-                Built with ❤️ by{" "}
-                <a href="#" className="underline decoration-[#d4388e] underline-offset-4 transition hover:text-[#f4ddb0]">
-                  c401 studios
-                </a>
-              </p>
+              <div className="mt-10 flex flex-col gap-4 border-t border-[#c5a355]/25 pt-6 text-sm text-[#dec787] md:flex-row md:items-center md:justify-between">
+                <p>© 2026 Forever Group of Companies. All rights reserved.</p>
+                <p>
+                  Built with ❤️ by{" "}
+                  <a
+                    href="https://github.com/TMohajane/c401-studios"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-[#d4388e] underline-offset-4 transition hover:text-[#f4ddb0]"
+                  >
+                    c401 studios
+                  </a>
+                </p>
+              </div>
             </div>
           </footer>
         </div>

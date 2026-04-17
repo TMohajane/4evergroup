@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { animate, motion, useInView, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, animate, motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const aboutCopy = [
   "Forever Glow is an anti marks cream created to give you that vibrant deeply hydration on your skin. It removes acne, scars, dark marks, pigmentation and discoloration.",
@@ -43,17 +43,10 @@ const deliveryOptions = [
   { title: "Aramex door to door", copy: "R100 (3-4 business days)" },
 ];
 
-const orderSteps = [
-  "Capitec: 1396299104, linked to 071 776 8306, Collien Ntsako Mabunda",
-  "FNB: ForeverGlow Business account, 62860102773, Cheque",
-  "Absa: Collien Ntsako Mabunda, 4105805301, Cheque",
-  "Reference: your name. Send proof of payment.",
-];
-
 const provenResults = [
   { value: 500, suffix: "+", label: "Products Sold", note: "And counting" },
   { value: 200, suffix: "+", label: "Happy Clients", note: "Glowing skin guaranteed" },
-  { value: 3, suffix: "", label: "Premium Products", note: "Crafted with care" },
+  { value: 5, suffix: "+", label: "Years Experience", note: "Trusted skincare brand" },
   { value: 99, suffix: "%", label: "Client Satisfaction", note: "Results that speak" },
 ];
 
@@ -62,17 +55,26 @@ const testimonials = [
     quote:
       "Forever Glow completely transformed my skin. The dark marks I had for years started fading within weeks. I cannot recommend it enough.",
     name: "Thandi",
+    tint: "bg-[#d4388e]",
   },
   {
     quote:
       "The body butter is absolutely amazing. My skin has never felt this soft and hydrated. The scent is heavenly too.",
     name: "Lerato",
+    tint: "bg-[#7d49b2]",
   },
   {
     quote:
       "I was skeptical at first but the results speak for themselves. My acne scars have visibly reduced and my skin glows.",
     name: "Naledi",
+    tint: "bg-[#c5a355]",
   },
+];
+
+const beforeAfterItems = [
+  { caption: "Dark marks faded in 4 weeks" },
+  { caption: "Acne scars visibly reduced" },
+  { caption: "Even skin tone restored" },
 ];
 
 const sectionReveal = {
@@ -88,6 +90,12 @@ const stagger = {
 const cardReveal = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
+};
+
+const carouselVariants = {
+  enter: (direction) => ({ x: direction > 0 ? 80 : -80, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (direction) => ({ x: direction > 0 ? -80 : 80, opacity: 0 }),
 };
 
 function CountUpNumber({ value, suffix }) {
@@ -115,18 +123,177 @@ function CountUpNumber({ value, suffix }) {
   );
 }
 
+function QuoteIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-8 w-8 text-[#d4388e]" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M10.5 5.5C6.9 7.2 5 10 5 13.9A4.1 4.1 0 0 0 9.1 18c2.3 0 4.1-1.8 4.1-4.1A4.1 4.1 0 0 0 9.1 9.8c-.5 0-.9.1-1.4.2.7-1.6 2-2.8 3.8-3.8l-1-1Zm8 0C14.9 7.2 13 10 13 13.9a4.1 4.1 0 0 0 4.1 4.1c2.3 0 4.1-1.8 4.1-4.1a4.1 4.1 0 0 0-4.1-4.1c-.5 0-.9.1-1.4.2.7-1.6 2-2.8 3.8-3.8l-1-1Z"
+      />
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#c5a355]" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="m12 2.4 2.96 6 6.62.96-4.79 4.67 1.13 6.6L12 17.5l-5.92 3.13 1.13-6.6L2.4 9.36l6.62-.96L12 2.4Z"
+      />
+    </svg>
+  );
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
+      <path fill="currentColor" d="m15.71 5.29-1.42-1.42L6.17 12l8.12 8.13 1.42-1.42L9 12z" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
+      <path fill="currentColor" d="m8.29 18.71 1.42 1.42L17.83 12 9.71 3.87 8.29 5.29 15 12z" />
+    </svg>
+  );
+}
+
+function LeafIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6 text-[#c5a355]" aria-hidden="true">
+      <path fill="currentColor" d="M20 4.5c-8 .2-13 4.6-13.5 11.8A6.5 6.5 0 0 0 13 22c5.6 0 8.5-5.4 8.5-11.8V4.5H20Zm-9.2 12.1a8.9 8.9 0 0 1 6.2-6.4l.5 1.6a7.4 7.4 0 0 0-5 5.1l-1.7-.3Z" />
+    </svg>
+  );
+}
+
+function DropIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6 text-[#d4388e]" aria-hidden="true">
+      <path fill="currentColor" d="M12 2.5S5 10.3 5 14.7A7 7 0 1 0 19 14.7C19 10.3 12 2.5 12 2.5Zm0 16.7a5.2 5.2 0 0 1-5.2-5.2c0-2.4 3-6.5 5.2-9 2.2 2.5 5.2 6.6 5.2 9A5.2 5.2 0 0 1 12 19.2Z" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M20.52 3.48A11.83 11.83 0 0 0 12.04 0 11.96 11.96 0 0 0 1.64 17.88L0 24l6.28-1.64a11.96 11.96 0 0 0 5.74 1.46h.01C18.63 23.82 24 18.45 24 11.84c0-3.17-1.24-6.15-3.48-8.36ZM12.03 21.8h-.01a9.95 9.95 0 0 1-5.07-1.38l-.36-.21-3.73.97.99-3.64-.23-.37a9.95 9.95 0 0 1-1.54-5.33c0-5.5 4.47-9.97 9.97-9.97 2.67 0 5.18 1.04 7.06 2.92a9.9 9.9 0 0 1 2.92 7.05c0 5.5-4.48 9.97-9.99 9.97Zm5.46-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.46-.15-.66.15s-.76.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.66-1.59-.9-2.17-.24-.58-.48-.5-.66-.5h-.56c-.2 0-.52.08-.8.38-.27.3-1.05 1.03-1.05 2.52 0 1.49 1.08 2.93 1.23 3.13.15.2 2.1 3.2 5.08 4.48.71.31 1.27.5 1.7.64.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35Z"
+      />
+    </svg>
+  );
+}
+
+function BeforeAfterSlider({ caption, index }) {
+  const [position, setPosition] = useState(50);
+  const containerRef = useRef(null);
+
+  const updatePosition = (clientX) => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const next = ((clientX - rect.left) / rect.width) * 100;
+    setPosition(Math.min(100, Math.max(0, next)));
+  };
+
+  return (
+    <motion.article
+      variants={cardReveal}
+      className="rounded-3xl border border-[#1a0533]/10 bg-white p-5 shadow-[0_20px_60px_rgba(26,5,51,0.1)]"
+    >
+      <div
+        ref={containerRef}
+        className="relative h-64 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#b39f92,#c8b8ab)]"
+        onClick={(event) => updatePosition(event.clientX)}
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(26,5,51,0.35),rgba(26,5,51,0.08))]" />
+        <motion.div
+          className="absolute inset-y-0 left-0 bg-[linear-gradient(130deg,#f8e6dc,#f5f0eb,#fbe5ef)]"
+          style={{ width: `${position}%` }}
+        />
+
+        <div className="absolute left-4 top-4 rounded-full bg-[#1a0533]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white">
+          Before
+        </div>
+        <div className="absolute right-4 top-4 rounded-full bg-[#d4388e]/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white">
+          After
+        </div>
+
+        <motion.div
+          drag="x"
+          dragConstraints={containerRef}
+          dragMomentum={false}
+          onDrag={(_, info) => updatePosition(info.point.x)}
+          style={{ left: `${position}%` }}
+          className="absolute bottom-0 top-0 -translate-x-1/2 cursor-ew-resize"
+        >
+          <div className="absolute bottom-0 left-1/2 top-0 w-[2px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(26,5,51,0.2)]" />
+          <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#1a0533]/20 bg-white text-[#1a0533] shadow-lg">
+            ↔
+          </div>
+        </motion.div>
+      </div>
+      <p className="mt-4 text-center text-sm font-medium text-[#4b3b60]">{caption}</p>
+      <p className="mt-1 text-center text-xs uppercase tracking-[0.12em] text-[#c5a355]">Comparison {index + 1}</p>
+    </motion.article>
+  );
+}
+
 export default function HomePage() {
   const { scrollY } = useScroll();
   const heroParallax = useTransform(scrollY, [0, 600], [0, 70]);
   const heroGradientShift = useTransform(scrollY, [0, 600], [0, -45]);
+  const aboutParallax = useTransform(scrollY, [0, 1500], [0, -60]);
+  const productParallax = useTransform(scrollY, [0, 1500], [0, 55]);
+
+  const [cursor, setCursor] = useState({ x: 50, y: 50 });
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setActiveTestimonial((current) => (current + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const paginate = (nextDirection) => {
+    setDirection(nextDirection);
+    setActiveTestimonial((current) => (current + nextDirection + testimonials.length) % testimonials.length);
+  };
+
+  const activeItem = testimonials[activeTestimonial];
 
   return (
-    <div className="bg-white text-[#1a0533]">
-      <section className="relative min-h-screen overflow-hidden bg-[linear-gradient(140deg,#f5f0eb_0%,#efe7e2_42%,#e8ddf2_100%)] px-4 pb-24 pt-32 sm:px-8 lg:px-12">
+    <motion.div
+      className="bg-white text-[#1a0533]"
+      initial="hidden"
+      animate="show"
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
+    >
+      <motion.section
+        className="relative min-h-screen overflow-hidden bg-[linear-gradient(140deg,#f5f0eb_0%,#efe7e2_42%,#e8ddf2_100%)] px-4 pb-24 pt-32 sm:px-8 lg:px-12"
+        onMouseMove={(event) => {
+          const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
+          setCursor({ x: ((event.clientX - left) / width) * 100, y: ((event.clientY - top) / height) * 100 });
+        }}
+      >
         <motion.div
           style={{ y: heroGradientShift }}
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_28%,rgba(212,56,142,0.18),transparent_55%)]"
         />
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `radial-gradient(320px at ${cursor.x}% ${cursor.y}%, rgba(212,56,142,0.25), transparent 70%)`,
+          }}
+        />
+
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.2 }}
@@ -136,12 +303,12 @@ export default function HomePage() {
           Forever Glow
         </motion.h1>
 
-        <motion.div
-          style={{ y: heroParallax }}
-          className="relative z-10 mx-auto grid w-full max-w-7xl items-end gap-12 lg:grid-cols-[1.08fr_0.92fr]"
-        >
+        <motion.div style={{ y: heroParallax }} className="relative z-10 mx-auto grid w-full max-w-7xl items-end gap-12 lg:grid-cols-[1.08fr_0.92fr]">
           <motion.div initial="hidden" animate="show" variants={sectionReveal}>
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#d4388e]">Forever Glow Skincare</p>
+            <h2 className="hero-display mt-6 text-[clamp(2.4rem,5.6vw,5rem)] font-bold leading-[0.95] tracking-tight text-transparent bg-gradient-to-r from-[#1a0533] via-[#7d49b2] to-[#d4388e] bg-clip-text">
+              Glow-forward care made for visible confidence
+            </h2>
             <p className="mt-6 max-w-xl text-lg text-[#4b3b60]">Editorial skincare essentials designed for vibrant, deeply hydrated skin.</p>
             <motion.a
               href="#products"
@@ -158,10 +325,10 @@ export default function HomePage() {
             transition={{ duration: 1.1, delay: 0.2, ease: "easeOut" }}
             className="justify-self-end"
           >
-            <div className="hero-image-placeholder h-[28rem] w-[min(28rem,88vw)] rounded-[2rem]" />
+            <div className="hero-image-placeholder h-[28rem] w-[min(28rem,88vw)] rounded-[2rem] shadow-[0_35px_80px_rgba(26,5,51,0.16)]" />
           </motion.div>
         </motion.div>
-      </section>
+      </motion.section>
 
       <motion.section
         id="about"
@@ -169,8 +336,9 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#f5f0eb] px-4 py-32 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#f5f0eb] px-4 py-32 sm:px-8 lg:px-12"
       >
+        <motion.div style={{ y: aboutParallax }} className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#d4388e]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <h2 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#1a0533]">
@@ -200,8 +368,9 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-white px-4 py-28 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-white px-4 py-28 sm:px-8 lg:px-12"
       >
+        <motion.div style={{ y: productParallax }} className="pointer-events-none absolute left-0 top-10 h-64 w-64 rounded-full bg-[#7d49b2]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-start gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="grid gap-6 sm:grid-cols-2">
             {products.map((product, index) => (
@@ -240,15 +409,15 @@ export default function HomePage() {
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden bg-[#f5f0eb] px-4 py-32 sm:px-8 lg:px-12"
       >
-        <p className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 hero-display text-[clamp(8rem,20vw,16rem)] font-bold leading-none tracking-tight text-[#1a0533]/10">
+        <p className="pointer-events-none absolute left-1/2 top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 hero-display text-[clamp(8rem,20vw,16rem)] font-bold leading-none tracking-tight text-[#1a0533]/20">
           glow
         </p>
-        <div className="relative z-10 mx-auto w-full max-w-7xl">
+        <div className="relative z-[2] mx-auto w-full max-w-7xl">
           <h2 className="hero-display text-[clamp(2.2rem,4.8vw,4.5rem)] font-bold tracking-tight text-[#1a0533]">Complete Collection</h2>
           <p className="mt-4 text-lg text-gray-600">Complete Collection - All 3 for R710.00 (excluding delivery)</p>
 
           <motion.div variants={cardReveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 max-w-3xl">
-            <motion.div whileHover={{ scale: 1.02 }} className="rounded-2xl border border-[#1a0533]/15 bg-white/75 p-8 shadow-[0_15px_40px_rgba(26,5,51,0.12)] backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
+            <motion.div whileHover={{ scale: 1.02 }} className="rounded-2xl border border-[#1a0533]/20 bg-white/30 p-8 shadow-[0_15px_40px_rgba(26,5,51,0.12)] backdrop-blur-md transition-shadow duration-300 hover:shadow-xl">
               <h3 className="hero-display text-[clamp(1.8rem,3.6vw,3rem)] font-bold tracking-tight text-[#1a0533]">
                 Bundle your <span className="italic">glow routine</span>
               </h3>
@@ -306,19 +475,100 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#faf7f2] px-4 py-28 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#faf7f2] px-4 py-28 sm:px-8 lg:px-12"
       >
+        <div className="pointer-events-none absolute right-16 top-20 h-52 w-52 rounded-full bg-gradient-to-br from-[#7d49b2]/30 to-[#d4388e]/10 blur-3xl" />
         <div className="mx-auto w-full max-w-7xl">
           <h2 className="hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">What Our Clients Say</h2>
+          <div className="mt-12 rounded-3xl border border-[#1a0533]/10 bg-[#1d0c36] p-8 text-[#f6e7c2] shadow-[0_22px_60px_rgba(26,5,51,0.3)] sm:p-10">
+            <div className="relative overflow-hidden">
+              <AnimatePresence mode="wait" custom={direction}>
+                <motion.article
+                  key={activeItem.name}
+                  custom={direction}
+                  variants={carouselVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.42, ease: "easeOut" }}
+                >
+                  <QuoteIcon />
+                  <div className="mt-5 flex gap-1" aria-label="5 star rating">
+                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                      <StarIcon key={starIndex} />
+                    ))}
+                  </div>
+                  <p className="mt-6 text-xl italic leading-9 text-[#f6e7c2]">“{activeItem.quote}”</p>
+                  <div className="mt-8 flex items-center gap-4">
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-semibold text-white ${activeItem.tint}`}>
+                      {activeItem.name
+                        .split(" ")
+                        .map((part) => part[0])
+                        .join("")}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">{activeItem.name}</p>
+                      <p className="text-sm text-[#c5a355]">Forever Glow Client</p>
+                    </div>
+                  </div>
+                </motion.article>
+              </AnimatePresence>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => paginate(-1)}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#d4388e] hover:text-[#d4388e]"
+                  aria-label="Previous testimonial"
+                >
+                  <ChevronLeftIcon />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => paginate(1)}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#d4388e] hover:text-[#d4388e]"
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRightIcon />
+                </button>
+              </div>
+              <div className="flex items-center gap-2">
+                {testimonials.map((item, index) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    onClick={() => {
+                      setDirection(index > activeTestimonial ? 1 : -1);
+                      setActiveTestimonial(index);
+                    }}
+                    className={`h-2 rounded-full transition-all ${
+                      index === activeTestimonial ? "w-8 bg-[#d4388e]" : "w-2 bg-white/40 hover:bg-white/70"
+                    }`}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="before-after"
+        variants={sectionReveal}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="bg-white px-4 py-28 sm:px-8 lg:px-12"
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <h2 className="hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">Real Results, Real Glow</h2>
+          <p className="mt-4 max-w-2xl text-lg text-[#4b3b60]">Drag the slider to compare before and after results from our routine.</p>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-6 md:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <motion.article key={testimonial.name} variants={cardReveal} className="rounded-2xl bg-white p-7 shadow-[0_18px_45px_rgba(26,5,51,0.08)]">
-                <p className="text-lg leading-8 text-gray-600">“{testimonial.quote}”</p>
-                <p className="mt-5 text-lg font-semibold text-[#1a0533]">{testimonial.name}</p>
-                <p className="mt-2 text-[#c5a355]" aria-label="5 star rating">
-                  ★★★★★
-                </p>
-              </motion.article>
+            {beforeAfterItems.map((item, index) => (
+              <BeforeAfterSlider key={item.caption} index={index} caption={item.caption} />
             ))}
           </motion.div>
         </div>
@@ -330,41 +580,34 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-white px-4 py-28 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#f5f0eb] px-4 py-28 sm:px-8 lg:px-12"
       >
+        <div className="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(circle_at_15%_20%,rgba(197,163,85,0.2),transparent_40%),radial-gradient(circle_at_90%_75%,rgba(212,56,142,0.15),transparent_42%)]" />
         <div className="mx-auto w-full max-w-7xl">
           <h2 className="hero-display text-[clamp(2.1rem,4.5vw,4rem)] font-bold tracking-tight text-[#1a0533]">Ingredients</h2>
-          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-            {ingredients.map((ingredient) => (
-              <motion.article key={ingredient.title} variants={cardReveal} whileHover={{ scale: 1.03 }} className="rounded-2xl border border-[#1a0533]/10 bg-[#f8f3ef] p-6 transition-shadow duration-300 hover:shadow-xl">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#1a0533] text-sm font-semibold text-[#c5a355]">FG</div>
-                <h3 className="hero-display text-2xl font-bold tracking-tight text-[#1a0533]">{ingredient.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-gray-600">{ingredient.copy}</p>
-              </motion.article>
-            ))}
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-12 space-y-6">
+            {ingredients.map((ingredient, index) => {
+              const reversed = index % 2 === 1;
+              return (
+                <motion.article
+                  key={ingredient.title}
+                  variants={cardReveal}
+                  className={`grid gap-6 rounded-3xl border border-[#1a0533]/10 bg-[#faf7f2]/90 p-7 shadow-[0_16px_40px_rgba(26,5,51,0.08)] lg:grid-cols-[0.22fr_0.78fr] ${
+                    reversed ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : ""
+                  }`}
+                >
+                  <div className="flex flex-col items-start gap-4">
+                    <p className="hero-display text-5xl leading-none text-[#c5a355]">{String(index + 1).padStart(2, "0")}</p>
+                    <div className="rounded-full bg-white p-3 shadow-sm">{index % 2 === 0 ? <LeafIcon /> : <DropIcon />}</div>
+                  </div>
+                  <div>
+                    <h3 className="hero-display text-[clamp(1.6rem,3vw,2.3rem)] font-bold tracking-tight text-[#1a0533]">{ingredient.title}</h3>
+                    <p className="mt-4 text-base leading-8 text-[#4b3b60]">{ingredient.copy}</p>
+                  </div>
+                </motion.article>
+              );
+            })}
           </motion.div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        id="delivery"
-        variants={sectionReveal}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#1a0533] px-4 py-28 text-[#c5a355] sm:px-8 lg:px-12"
-      >
-        <div className="mx-auto w-full max-w-7xl">
-          <h2 className="hero-display text-[clamp(2.1rem,4.4vw,4rem)] font-bold tracking-tight">Delivery</h2>
-          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-5 md:grid-cols-3">
-            {deliveryOptions.map((option) => (
-              <motion.article key={option.title} variants={cardReveal} className="rounded-2xl border border-[#c5a355]/35 bg-white/5 p-6">
-                <h3 className="hero-display text-2xl text-[#f6e7c2]">{option.title}</h3>
-                <p className="mt-3 text-[#dec787]">{option.copy}</p>
-              </motion.article>
-            ))}
-          </motion.div>
-          <p className="mt-8 text-[#dec787]">Pick up in Midrand or Joburg</p>
         </div>
       </motion.section>
 
@@ -374,20 +617,66 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#f5f0eb] px-4 py-28 sm:px-8 lg:px-12"
+        className="bg-white px-4 py-28 sm:px-8 lg:px-12"
       >
         <div className="mx-auto w-full max-w-7xl">
           <h2 className="hero-display text-[clamp(2.1rem,4.4vw,4rem)] font-bold tracking-tight text-[#1a0533]">How to Order</h2>
-          <ol className="mt-10 space-y-4 text-gray-600">
-            <li className="rounded-2xl border border-[#1a0533]/10 bg-white p-6">WhatsApp: 071 776 8306 / https://wa.me/27717768306</li>
-            {orderSteps.map((step) => (
-              <li key={step} className="rounded-2xl border border-[#1a0533]/10 bg-white p-6">
-                {step}
-              </li>
+          <div className="mt-10 space-y-6">
+            {[
+              {
+                title: "Choose Your Products",
+                description: "Browse our collection and pick your favourites",
+              },
+              {
+                title: "Place Your Order",
+                description: (
+                  <a
+                    href="https://wa.me/27717768306"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[#1a0533] underline decoration-[#d4388e] underline-offset-4"
+                  >
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#25D366] text-white">
+                      <WhatsAppIcon />
+                    </span>
+                    Send your order via WhatsApp at 071 776 8306
+                  </a>
+                ),
+              },
+              {
+                title: "Make Payment",
+                description: (
+                  <div className="space-y-1">
+                    <p>Capitec: 1396299104, Collien Ntsako Mabunda</p>
+                    <p>FNB: 62860102773, ForeverGlow Business, Cheque</p>
+                    <p>Absa: 4105805301, Collien Ntsako Mabunda, Cheque</p>
+                    <p>Use your name as reference</p>
+                  </div>
+                ),
+              },
+              {
+                title: "Send Proof of Payment",
+                description: "WhatsApp your proof of payment and keep it until delivery",
+              },
+              {
+                title: "Receive Your Glow",
+                description: `Choose delivery: ${deliveryOptions[0].title} ${deliveryOptions[0].copy}, ${deliveryOptions[1].title} ${deliveryOptions[1].copy}, ${deliveryOptions[2].title} ${deliveryOptions[2].copy}, or pick up in Midrand/Joburg`,
+              },
+            ].map((step, index, arr) => (
+              <div key={step.title} className="relative pl-16">
+                {index < arr.length - 1 && <div className="absolute left-6 top-12 h-[calc(100%-0.5rem)] w-px bg-[#d4388e]/40" aria-hidden="true" />}
+                <div className="absolute left-0 top-1 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#7d49b2] to-[#d4388e] text-lg font-semibold text-white">
+                  {index + 1}
+                </div>
+                <motion.article whileHover={{ y: -3 }} className="rounded-2xl border border-[#1a0533]/10 bg-[#faf7f2] p-6 transition-shadow hover:shadow-lg">
+                  <h3 className="hero-display text-2xl font-bold tracking-tight text-[#1a0533]">{step.title}</h3>
+                  <div className="mt-3 text-[#4b3b60]">{step.description}</div>
+                </motion.article>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </motion.section>
-    </div>
+    </motion.div>
   );
 }
