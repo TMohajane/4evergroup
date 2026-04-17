@@ -8,12 +8,20 @@ import { usePathname } from "next/navigation";
 const SCROLL_THRESHOLD = 24;
 
 const links = [
+  { href: "/#about", label: "About" },
   { href: "/#products", label: "Products" },
-  { href: "/#story", label: "Story" },
   { href: "/#ingredients", label: "Ingredients" },
-  { href: "/#delivery", label: "Delivery" },
   { href: "/#order", label: "How to Order" },
 ];
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 32 32" aria-hidden="true" className="h-4 w-4 fill-current">
+      <path d="M19.11 17.53c-.27-.13-1.56-.77-1.8-.86-.24-.09-.42-.13-.6.14s-.69.86-.84 1.04c-.16.18-.31.2-.58.07-.27-.13-1.12-.41-2.13-1.3-.79-.7-1.32-1.56-1.47-1.82-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.6-1.45-.82-1.98-.21-.51-.43-.45-.6-.46h-.51c-.18 0-.47.07-.72.34-.24.27-.94.92-.94 2.24s.96 2.6 1.09 2.78c.13.18 1.88 2.87 4.56 4.02.64.28 1.14.44 1.53.56.64.2 1.22.17 1.68.1.51-.08 1.56-.64 1.78-1.26.22-.63.22-1.16.16-1.26-.07-.11-.24-.18-.51-.31z" />
+      <path d="M16.02 3.2C8.95 3.2 3.2 8.93 3.2 16c0 2.5.72 4.93 2.09 7.03L3 29l6.15-2.22a12.77 12.77 0 0 0 6.87 2c7.07 0 12.8-5.73 12.8-12.8S23.1 3.2 16.02 3.2zm0 23.46c-2.05 0-4.06-.55-5.81-1.6l-.42-.25-3.65 1.32 1.33-3.56-.27-.44a10.58 10.58 0 0 1-1.62-5.65c0-5.85 4.76-10.61 10.62-10.61 5.85 0 10.61 4.76 10.61 10.61 0 5.86-4.76 10.62-10.61 10.62z" />
+    </svg>
+  );
+}
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -28,18 +36,20 @@ export default function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isHomeRoute]);
 
+  const baseText = scrolled ? "text-[#1a0533]" : "text-[#1a0533]";
+
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
-        scrolled ? "border-[#c5a355]/30 bg-[#120226]/95 backdrop-blur" : "border-transparent bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#f5f0eb]/95 shadow-sm backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="hero-display text-2xl tracking-wide text-[#c5a355]">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-5 sm:px-8 lg:px-12">
+        <Link href="/" className={`hero-display text-3xl font-bold tracking-tight ${baseText}`}>
           Forever Glow
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-[#f8e8bc] md:flex">
+        <nav className={`hidden items-center gap-8 text-sm font-medium md:flex ${baseText}`}>
           {links.map((link) => (
             <Link key={link.href} href={link.href} className="transition hover:text-[#d4388e]">
               {link.label}
@@ -49,39 +59,48 @@ export default function SiteHeader() {
             href="https://wa.me/27717768306"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-[#c5a355] px-4 py-2 transition hover:bg-[#c5a355] hover:text-[#1a0533]"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white transition hover:scale-105"
+            aria-label="WhatsApp"
           >
-            WhatsApp
+            <WhatsAppIcon />
           </a>
         </nav>
 
         <button
           type="button"
-          className="rounded border border-[#c5a355]/70 px-3 py-2 text-sm text-[#f8e8bc] md:hidden"
+          className={`inline-flex h-10 w-10 items-center justify-center rounded-full border ${
+            scrolled ? "border-[#1a0533]/20 text-[#1a0533]" : "border-[#1a0533]/25 text-[#1a0533]"
+          } md:hidden`}
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          Menu
+          <span className="text-xl">☰</span>
         </button>
       </div>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="border-t border-[#c5a355]/20 bg-[#120226] px-4 py-4 md:hidden"
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            className="border-t border-[#1a0533]/10 bg-[#f5f0eb] px-4 py-5 md:hidden"
           >
-            <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 text-[#f8e8bc]">
+            <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 text-[#1a0533]">
               {links.map((link) => (
                 <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="transition hover:text-[#d4388e]">
                   {link.label}
                 </Link>
               ))}
-              <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" className="text-[#c5a355]">
+              <a
+                href="https://wa.me/27717768306"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-sm text-white"
+              >
+                <WhatsAppIcon />
                 WhatsApp
               </a>
             </div>
