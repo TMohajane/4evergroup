@@ -232,7 +232,10 @@ function BeforeAfterSlider({ caption, index }) {
         >
           <div className="absolute bottom-0 left-1/2 top-0 w-[2px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(26,5,51,0.2)]" />
           <div className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#1a0533]/20 bg-white text-[#1a0533] shadow-lg">
-            ↔
+            <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
+              <path fill="currentColor" d="M7 9V7l-5 5 5 5v-2h10v2l5-5-5-5v2H7Z" />
+            </svg>
+            <span className="sr-only">Drag to compare before and after</span>
           </div>
         </motion.div>
       </div>
@@ -252,14 +255,22 @@ export default function HomePage() {
   const [cursor, setCursor] = useState({ x: 50, y: 50 });
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const deliverySummaryOptions = deliveryOptions.map((option) => `${option.title} ${option.copy}`);
+  const deliverySummary =
+    deliverySummaryOptions.length > 1
+      ? `${deliverySummaryOptions.slice(0, -1).join(", ")}, or ${deliverySummaryOptions[deliverySummaryOptions.length - 1]}`
+      : deliverySummaryOptions[0];
 
   useEffect(() => {
+    if (!isAutoPlay) return undefined;
+
     const timer = setInterval(() => {
       setDirection(1);
       setActiveTestimonial((current) => (current + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isAutoPlay]);
 
   const paginate = (nextDirection) => {
     setDirection(nextDirection);
@@ -306,8 +317,9 @@ export default function HomePage() {
         <motion.div style={{ y: heroParallax }} className="relative z-10 mx-auto grid w-full max-w-7xl items-end gap-12 lg:grid-cols-[1.08fr_0.92fr]">
           <motion.div initial="hidden" animate="show" variants={sectionReveal}>
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#d4388e]">Forever Glow Skincare</p>
-            <h2 className="hero-display mt-6 text-[clamp(2.4rem,5.6vw,5rem)] font-bold leading-[0.95] tracking-tight text-transparent bg-gradient-to-r from-[#1a0533] via-[#7d49b2] to-[#d4388e] bg-clip-text">
-              Glow-forward care made for visible confidence
+            <h2 className="hero-display mt-6 text-[clamp(2.4rem,5.6vw,5rem)] font-bold leading-[0.95] tracking-tight text-[#1a0533]">
+              Glow-forward care made for{" "}
+              <span className="bg-gradient-to-r from-[#1a0533] via-[#7d49b2] to-[#d4388e] bg-clip-text text-transparent">visible confidence</span>
             </h2>
             <p className="mt-6 max-w-xl text-lg text-[#4b3b60]">Editorial skincare essentials designed for vibrant, deeply hydrated skin.</p>
             <motion.a
@@ -503,6 +515,7 @@ export default function HomePage() {
                     <div className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-semibold text-white ${activeItem.tint}`}>
                       {activeItem.name
                         .split(" ")
+                        .filter(Boolean)
                         .map((part) => part[0])
                         .join("")}
                     </div>
@@ -517,6 +530,13 @@ export default function HomePage() {
 
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsAutoPlay((current) => !current)}
+                  className="inline-flex h-10 items-center rounded-full border border-white/20 px-4 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:border-[#d4388e] hover:text-[#d4388e]"
+                >
+                  {isAutoPlay ? "Pause" : "Play"}
+                </button>
                 <button
                   type="button"
                   onClick={() => paginate(-1)}
@@ -592,15 +612,13 @@ export default function HomePage() {
                 <motion.article
                   key={ingredient.title}
                   variants={cardReveal}
-                  className={`grid gap-6 rounded-3xl border border-[#1a0533]/10 bg-[#faf7f2]/90 p-7 shadow-[0_16px_40px_rgba(26,5,51,0.08)] lg:grid-cols-[0.22fr_0.78fr] ${
-                    reversed ? "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1" : ""
-                  }`}
+                  className="grid gap-6 rounded-3xl border border-[#1a0533]/10 bg-[#faf7f2]/90 p-7 shadow-[0_16px_40px_rgba(26,5,51,0.08)] lg:grid-cols-[0.22fr_0.78fr]"
                 >
-                  <div className="flex flex-col items-start gap-4">
+                  <div className={`flex flex-col items-start gap-4 ${reversed ? "lg:order-2" : ""}`}>
                     <p className="hero-display text-5xl leading-none text-[#c5a355]">{String(index + 1).padStart(2, "0")}</p>
                     <div className="rounded-full bg-white p-3 shadow-sm">{index % 2 === 0 ? <LeafIcon /> : <DropIcon />}</div>
                   </div>
-                  <div>
+                  <div className={reversed ? "lg:order-1" : ""}>
                     <h3 className="hero-display text-[clamp(1.6rem,3vw,2.3rem)] font-bold tracking-tight text-[#1a0533]">{ingredient.title}</h3>
                     <p className="mt-4 text-base leading-8 text-[#4b3b60]">{ingredient.copy}</p>
                   </div>
@@ -660,7 +678,7 @@ export default function HomePage() {
               },
               {
                 title: "Receive Your Glow",
-                description: `Choose delivery: ${deliveryOptions[0].title} ${deliveryOptions[0].copy}, ${deliveryOptions[1].title} ${deliveryOptions[1].copy}, ${deliveryOptions[2].title} ${deliveryOptions[2].copy}, or pick up in Midrand/Joburg`,
+                description: `Choose delivery: ${deliverySummary}, or pick up in Midrand/Joburg`,
               },
             ].map((step, index, arr) => (
               <div key={step.title} className="relative pl-16">
