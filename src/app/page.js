@@ -26,6 +26,13 @@ const steps = [
   "Reference: your name. Send proof of payment and keep the proof of payment until you get your order.",
 ];
 
+const PARALLAX_SCROLL_RANGE = 450;
+const PARALLAX_Y_OFFSET = 90;
+const PARALLAX_MIN_OPACITY = 0.75;
+const MARQUEE_REPEAT_COUNT = 10;
+const MARQUEE_TEXT = "Shop Online | Midrand | Joburg";
+const MARQUEE_ITEMS = Array.from({ length: MARQUEE_REPEAT_COUNT * 2 }, (_, index) => ({ id: index, label: MARQUEE_TEXT }));
+
 const reveal = {
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
@@ -33,8 +40,8 @@ const reveal = {
 
 export default function HomePage() {
   const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 450], [0, 90]);
-  const heroOpacity = useTransform(scrollY, [0, 450], [1, 0.75]);
+  const heroY = useTransform(scrollY, [0, PARALLAX_SCROLL_RANGE], [0, PARALLAX_Y_OFFSET]);
+  const heroOpacity = useTransform(scrollY, [0, PARALLAX_SCROLL_RANGE], [1, PARALLAX_MIN_OPACITY]);
 
   return (
     <div>
@@ -74,14 +81,9 @@ export default function HomePage() {
 
       <section className="overflow-hidden bg-[#120226] py-4 text-[#c5a355]">
         <div className="marquee-track text-sm uppercase tracking-[0.18em]">
-          {Array.from({ length: 10 }).map((_, index) => (
-            <span key={`m-${index}`} className="mx-6">
-              Shop Online | Midrand | Joburg
-            </span>
-          ))}
-          {Array.from({ length: 10 }).map((_, index) => (
-            <span key={`m2-${index}`} className="mx-6">
-              Shop Online | Midrand | Joburg
+          {MARQUEE_ITEMS.map((item) => (
+            <span key={item.id} className="mx-6">
+              {item.label}
             </span>
           ))}
         </div>
@@ -101,14 +103,14 @@ export default function HomePage() {
               <div className="image-placeholder mb-6 h-24 rounded-2xl" />
               <h3 className="hero-display text-2xl text-[#1a0533]">{product.name}</h3>
               <p className="mt-2 text-[#d4388e]">{product.price}</p>
-              <Link
+              <a
                 href="https://wa.me/27717768306"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-block rounded-full border border-[#1a0533] px-4 py-2 text-sm transition group-hover:bg-[#1a0533] group-hover:text-[#faf7f2]"
               >
                 Order Now
-              </Link>
+              </a>
             </motion.article>
           ))}
         </motion.div>

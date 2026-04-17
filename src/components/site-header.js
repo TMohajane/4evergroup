@@ -5,6 +5,8 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
+const SCROLL_THRESHOLD = 24;
+
 const links = [
   { href: "/#products", label: "Products" },
   { href: "/#story", label: "Story" },
@@ -15,15 +17,16 @@ const links = [
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  const isHomeRoute = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(pathname !== "/" || window.scrollY > 24);
+    const onScroll = () => setScrolled(!isHomeRoute || window.scrollY > SCROLL_THRESHOLD);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, [isHomeRoute]);
 
   return (
     <header
@@ -55,7 +58,7 @@ export default function SiteHeader() {
         <button
           type="button"
           className="rounded border border-[#c5a355]/70 px-3 py-2 text-sm text-[#f8e8bc] md:hidden"
-          onClick={() => setMenuOpen((value) => !value)}
+          onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
