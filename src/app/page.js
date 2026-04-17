@@ -41,6 +41,7 @@ const deliveryOptions = [
   { title: "Pep standard", copy: "R60 (7-9 business days)" },
   { title: "Pep express", copy: "R110 (3-5 business days)" },
   { title: "Aramex door to door", copy: "R100 (3-4 business days)" },
+  { title: "Postnet", copy: "R109 (2-3 business days)" },
 ];
 
 const provenResults = [
@@ -304,15 +305,6 @@ export default function HomePage() {
             background: `radial-gradient(320px at ${cursor.x}% ${cursor.y}%, rgba(212,56,142,0.25), transparent 70%)`,
           }}
         />
-
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="pointer-events-none absolute left-1/2 top-1/2 z-0 w-full -translate-x-1/2 -translate-y-1/2 px-4 text-center hero-display text-[clamp(5rem,15vw,12rem)] font-bold leading-[0.88] tracking-tight text-[#1a0533]"
-        >
-          Forever Glow
-        </motion.h1>
 
         <motion.div style={{ y: heroParallax }} className="relative z-10 mx-auto grid w-full max-w-7xl items-end gap-12 lg:grid-cols-[1.08fr_0.92fr]">
           <motion.div initial="hidden" animate="show" variants={sectionReveal}>
