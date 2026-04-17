@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.card {
+  border: 1px solid rgba(197, 163, 85, 0.28);
+  background: linear-gradient(180deg, rgba(26, 5, 51, 0.95) 0%, rgba(18, 2, 38, 0.95) 100%);
+  border-radius: 1rem;
+}
+
+.section-title {
+  color: #c5a355;
+}
+
+.image-placeholder {
+  border: 1px dashed rgba(212, 56, 142, 0.8);
+  background: rgba(212, 56, 142, 0.08);
+  color: #f3d9eb;
+}
