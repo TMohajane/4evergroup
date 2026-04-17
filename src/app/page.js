@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const aboutCopy = [
   "Forever Glow is an anti marks cream created to give you that vibrant deeply hydration on your skin. It removes acne, scars, dark marks, pigmentation and discoloration.",
@@ -49,6 +50,31 @@ const orderSteps = [
   "Reference: your name. Send proof of payment.",
 ];
 
+const provenResults = [
+  { value: 500, suffix: "+", label: "Products Sold", note: "And counting" },
+  { value: 200, suffix: "+", label: "Happy Clients", note: "Glowing skin guaranteed" },
+  { value: 3, suffix: "", label: "Premium Products", note: "Crafted with care" },
+  { value: 99, suffix: "%", label: "Client Satisfaction", note: "Results that speak" },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Forever Glow completely transformed my skin. The dark marks I had for years started fading within weeks. I cannot recommend it enough.",
+    name: "Thandi",
+  },
+  {
+    quote:
+      "The body butter is absolutely amazing. My skin has never felt this soft and hydrated. The scent is heavenly too.",
+    name: "Lerato",
+  },
+  {
+    quote:
+      "I was skeptical at first but the results speak for themselves. My acne scars have visibly reduced and my skin glows.",
+    name: "Naledi",
+  },
+];
+
 const sectionReveal = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0, transition: { duration: 0.75, ease: "easeOut" } },
@@ -63,6 +89,31 @@ const cardReveal = {
   hidden: { opacity: 0, y: 40 },
   show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
 };
+
+function CountUpNumber({ value, suffix }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return undefined;
+
+    const controls = animate(0, value, {
+      duration: 1.2,
+      ease: "easeOut",
+      onUpdate: (latest) => setCount(Math.round(latest)),
+    });
+
+    return () => controls.stop();
+  }, [inView, value]);
+
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
+}
 
 export default function HomePage() {
   const { scrollY } = useScroll();
@@ -189,30 +240,23 @@ export default function HomePage() {
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden bg-[#f5f0eb] px-4 py-32 sm:px-8 lg:px-12"
       >
-        <p className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 hero-display text-[clamp(8rem,20vw,16rem)] font-bold leading-none tracking-tight text-[#1a0533]/5">
+        <p className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 hero-display text-[clamp(8rem,20vw,16rem)] font-bold leading-none tracking-tight text-[#1a0533]/10">
           glow
         </p>
-        <div className="relative mx-auto w-full max-w-7xl">
+        <div className="relative z-10 mx-auto w-full max-w-7xl">
           <h2 className="hero-display text-[clamp(2.2rem,4.8vw,4.5rem)] font-bold tracking-tight text-[#1a0533]">Complete Collection</h2>
-          <p className="mt-4 text-lg text-gray-600">All 3 for R710.00</p>
-          <p className="text-gray-600">(excluding delivery)</p>
+          <p className="mt-4 text-lg text-gray-600">Complete Collection - All 3 for R710.00 (excluding delivery)</p>
 
-          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-12 grid gap-6 md:grid-cols-3">
-            {products.map((product) => (
-              <motion.div key={`bundle-${product.name}`} variants={cardReveal} whileHover={{ scale: 1.03 }} className="editorial-product-card h-[16rem] rounded-2xl shadow-[0_15px_40px_rgba(26,5,51,0.12)] transition-shadow duration-300 hover:shadow-xl" />
-            ))}
-          </motion.div>
-
-          <div className="mt-16 grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <motion.div whileHover={{ scale: 1.03 }} className="editorial-product-card h-[14rem] rounded-2xl shadow-[0_15px_40px_rgba(26,5,51,0.12)] transition-shadow duration-300 hover:shadow-xl" />
-              <motion.div whileHover={{ scale: 1.03 }} className="editorial-product-card h-[14rem] rounded-2xl shadow-[0_15px_40px_rgba(26,5,51,0.12)] transition-shadow duration-300 hover:shadow-xl" />
-            </div>
-            <div>
-              <h3 className="hero-display text-[clamp(2rem,4vw,3.8rem)] font-bold tracking-tight text-[#1a0533]">
+          <motion.div variants={cardReveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 max-w-3xl">
+            <motion.div whileHover={{ scale: 1.02 }} className="rounded-2xl border border-[#1a0533]/15 bg-white/75 p-8 shadow-[0_15px_40px_rgba(26,5,51,0.12)] backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
+              <h3 className="hero-display text-[clamp(1.8rem,3.6vw,3rem)] font-bold tracking-tight text-[#1a0533]">
                 Bundle your <span className="italic">glow routine</span>
               </h3>
-              <p className="mt-4 text-gray-600">A complete trio to hydrate, soften, and visibly renew your skin texture.</p>
+              <ul className="mt-6 space-y-3 text-lg text-gray-700">
+                <li>Facial Moisturizer</li>
+                <li>Body Butter</li>
+                <li>Omega Tissue Oil</li>
+              </ul>
               <motion.a
                 href="https://wa.me/27717768306"
                 target="_blank"
@@ -222,8 +266,61 @@ export default function HomePage() {
               >
                 Get the bundle
               </motion.a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="results"
+        variants={sectionReveal}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="bg-[#1a0533] px-4 py-28 text-[#f6e7c2] sm:px-8 lg:px-12"
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <p className="inline-flex rounded-full border border-[#d4388e]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#d4388e]">By The Numbers</p>
+          <h2 className="mt-6 hero-display text-[clamp(2.2rem,5vw,4.5rem)] font-bold tracking-tight">
+            Proven <span className="text-[#c5a355]">Results</span>
+          </h2>
+
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {provenResults.map((result) => (
+              <motion.article key={result.label} variants={cardReveal} className="rounded-2xl border border-[#c5a355]/25 bg-white/5 p-6">
+                <p className="hero-display text-5xl font-bold leading-none text-[#f6e7c2]">
+                  <CountUpNumber value={result.value} suffix={result.suffix} />
+                </p>
+                <div className="mt-3 h-1 w-12 rounded-full bg-[#d4388e]" />
+                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-[#c5a355]">{result.label}</p>
+                <p className="mt-2 text-sm text-[#dec787]">{result.note}</p>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="testimonials"
+        variants={sectionReveal}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="bg-[#faf7f2] px-4 py-28 sm:px-8 lg:px-12"
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <h2 className="hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">What Our Clients Say</h2>
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-6 md:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <motion.article key={testimonial.name} variants={cardReveal} className="rounded-2xl bg-white p-7 shadow-[0_18px_45px_rgba(26,5,51,0.08)]">
+                <p className="text-lg leading-8 text-gray-600">“{testimonial.quote}”</p>
+                <p className="mt-5 text-lg font-semibold text-[#1a0533]">{testimonial.name}</p>
+                <p className="mt-2 text-[#c5a355]" aria-label="5 star rating">
+                  ★★★★★
+                </p>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </motion.section>
 
