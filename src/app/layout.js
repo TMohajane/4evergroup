@@ -117,6 +117,23 @@ export default function RootLayout({ children }) {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Policies</p>
+                  <ul className="mt-4 space-y-3 text-sm text-[#dec787]">
+                    {[
+                      { href: "/terms", label: "Terms & Conditions" },
+                      { href: "/privacy", label: "Privacy Policy" },
+                      { href: "/refunds", label: "Refund Policy" },
+                      { href: "/delivery-policy", label: "Delivery Policy" },
+                      { href: "/disclaimer", label: "Medical Disclaimer" },
+                    ].map((item) => (
+                      <li key={item.href}>
+                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f6e7c2]">
+                          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                          <span>{item.label}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div>

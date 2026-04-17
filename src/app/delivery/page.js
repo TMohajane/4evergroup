@@ -2,6 +2,7 @@ const deliveryOptions = [
   "Pep standard: R60 - takes 7-9 business days",
   "Pep express: R110 - takes 3-5 business days",
   "Aramex door to door: R100 - takes 3-4 business days",
+  "Postnet: R109 - takes 2-3 business days",
   "Pick up available in Midrand or Joburg",
 ];
 
