@@ -17,6 +17,6 @@ body {
 
 .hero-image-placeholder,
 .editorial-product-card {
-  background: linear-gradient(150deg, #e8d5f7, #c9aee8);
-  border: 1px solid rgba(91, 13, 140, 0.08);
+  background: linear-gradient(150deg, #c9aee8, #a07ad4);
+  border: 1px solid rgba(58, 0, 96, 0.12);
 }
