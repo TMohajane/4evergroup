@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
@@ -23,13 +24,21 @@ function WhatsAppIcon() {
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const rafRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 40);
+        rafRef.current = null;
+      });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -40,7 +49,7 @@ export default function SiteHeader() {
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center">
-          <img src="/photos/logo.png" alt="Forever Group of Companies" className="h-[110px] w-auto" />
+          <Image src="/photos/logo.png" alt="Forever Group of Companies" width={300} height={110} className="h-[110px] w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium md:flex text-white drop-shadow">
