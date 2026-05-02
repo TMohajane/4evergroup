@@ -69,6 +69,9 @@ function MapPinIcon({ className = "h-5 w-5" }) {
 export const metadata = {
   title: "Forever Glow",
   description: "Forever Glow skincare product showcase website",
+  icons: {
+    icon: "/photos/icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
@@ -22,15 +23,36 @@ function WhatsAppIcon() {
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 40);
+        rafRef.current = null;
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[#3A0060] shadow-lg">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-[#3A0060] shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center">
-          <img src="/photos/icon.png" alt="Forever Group of Companies" width="90" height="90" className="h-[90px] w-auto" />
+          <Image src="/photos/logo.png" alt="Forever Group of Companies" width={300} height={110} className="h-[110px] w-auto" />
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium md:flex text-white">
+        <nav className="hidden items-center gap-8 text-sm font-medium md:flex text-white drop-shadow">
           {links.map((link) => (
             <Link key={link.href} href={link.href} className="transition hover:text-[#FFD700]">
               {link.label}
