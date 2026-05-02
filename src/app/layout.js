@@ -74,19 +74,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
-      <body className="min-h-full bg-[#f5f0eb] text-[#1a0533]">
+      <body className="min-h-full bg-[#f9f4ff] text-[#1a0533]">
         <ScrollProgress />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
-          <footer className="bg-[#1a0533] px-4 py-14 text-[#c5a355] sm:px-8 lg:px-12">
+          <footer className="bg-[#1a0533] px-4 py-14 text-[#D4A017] sm:px-8 lg:px-12">
             <div className="mx-auto w-full max-w-7xl">
               <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
                 <div>
-                  <p className="hero-display text-3xl font-semibold tracking-tight text-[#f6e7c2]">Forever Glow</p>
-                  <p className="mt-4 max-w-xs text-sm leading-7 text-[#dec787]">Radiant skincare essentials designed for confident, everyday glow.</p>
+                  <p className="hero-display text-3xl font-semibold tracking-tight text-[#f5e0a0]">Forever Glow</p>
+                  <p className="mt-4 max-w-xs text-sm leading-7 text-[#e8c050]">Radiant skincare essentials designed for confident, everyday glow.</p>
                   <div className="mt-5 flex items-center gap-3">
                     <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] transition duration-300 hover:-translate-y-0.5 hover:scale-105">
                       <WhatsAppIcon className="h-5 w-5 text-white" />
@@ -101,8 +101,8 @@ export default function RootLayout({ children }) {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Quick Links</p>
-                  <ul className="mt-4 space-y-3 text-sm text-[#dec787]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Quick Links</p>
+                  <ul className="mt-4 space-y-3 text-sm text-[#e8c050]">
                     {[
                       { href: "#about", label: "About" },
                       { href: "#products", label: "Products" },
@@ -110,15 +110,15 @@ export default function RootLayout({ children }) {
                       { href: "#order", label: "How to Order" },
                     ].map((item) => (
                       <li key={item.href}>
-                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f6e7c2]">
+                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f5e0a0]">
                           <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                           <span>{item.label}</span>
                         </a>
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Policies</p>
-                  <ul className="mt-4 space-y-3 text-sm text-[#dec787]">
+                  <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Policies</p>
+                  <ul className="mt-4 space-y-3 text-sm text-[#e8c050]">
                     {[
                       { href: "/terms", label: "Terms & Conditions" },
                       { href: "/privacy", label: "Privacy Policy" },
@@ -127,7 +127,7 @@ export default function RootLayout({ children }) {
                       { href: "/disclaimer", label: "Medical Disclaimer" },
                     ].map((item) => (
                       <li key={item.href}>
-                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f6e7c2]">
+                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f5e0a0]">
                           <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                           <span>{item.label}</span>
                         </a>
@@ -137,29 +137,29 @@ export default function RootLayout({ children }) {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Contact</p>
-                  <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 text-sm text-[#dec787] transition hover:text-[#f6e7c2]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Contact</p>
+                  <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 text-sm text-[#e8c050] transition hover:text-[#f5e0a0]">
                     <WhatsAppIcon className="h-5 w-5 text-[#25D366]" />
                     <span>071 776 8306</span>
                   </a>
-                  <p className="mt-3 flex items-center gap-2 text-sm text-[#dec787]">
-                    <MapPinIcon className="h-5 w-5 text-[#c5a355]" />
+                  <p className="mt-3 flex items-center gap-2 text-sm text-[#e8c050]">
+                    <MapPinIcon className="h-5 w-5 text-[#D4A017]" />
                     <span>Midrand &amp; Joburg, South Africa</span>
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f6e7c2]">Follow Us</p>
-                  <div className="mt-4 space-y-3 text-sm text-[#dec787]">
-                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f6e7c2]" aria-label="Instagram">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Follow Us</p>
+                  <div className="mt-4 space-y-3 text-sm text-[#e8c050]">
+                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f5e0a0]" aria-label="Instagram">
                       <InstagramIcon className="h-5 w-5" />
                       <span>Instagram</span>
                     </a>
-                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f6e7c2]" aria-label="Facebook">
+                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f5e0a0]" aria-label="Facebook">
                       <FacebookIcon className="h-5 w-5" />
                       <span>Facebook</span>
                     </a>
-                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f6e7c2]" aria-label="TikTok">
+                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f5e0a0]" aria-label="TikTok">
                       <TikTokIcon className="h-5 w-5 text-white" />
                       <span>TikTok</span>
                     </a>
@@ -167,7 +167,7 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-col gap-4 border-t border-[#c5a355]/25 pt-6 text-sm text-[#dec787] md:flex-row md:items-center md:justify-between">
+              <div className="mt-10 flex flex-col gap-4 border-t border-[#D4A017]/25 pt-6 text-sm text-[#e8c050] md:flex-row md:items-center md:justify-between">
                 <p>© 2026 Forever Group of Companies. All rights reserved.</p>
                 <p>
                   Built with ❤️ by{" "}
@@ -175,7 +175,7 @@ export default function RootLayout({ children }) {
                     href="https://github.com/TMohajane/c401-studios"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline decoration-[#d4388e] underline-offset-4 transition hover:text-[#f4ddb0]"
+                    className="underline decoration-[#E91E8C] underline-offset-4 transition hover:text-[#f5e0a0]"
                   >
                     c401 studios
                   </a>

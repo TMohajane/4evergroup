@@ -13,7 +13,7 @@ export default function ScrollProgress() {
   return (
     <motion.div
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-[70] h-1 origin-left bg-gradient-to-r from-[#d4388e] to-[#c5a355]"
+      className="fixed inset-x-0 top-0 z-[70] h-1 origin-left bg-gradient-to-r from-[#E91E8C] to-[#D4A017]"
       style={{ scaleX }}
     />
   );

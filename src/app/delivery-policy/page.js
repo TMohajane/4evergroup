@@ -19,7 +19,7 @@ export default function DeliveryPolicyPage() {
           <h2 className="text-xl font-semibold">4.1 Delivery Options &amp; Costs</h2>
           <div className="overflow-hidden rounded-2xl border border-[#1a0533]/10 bg-white">
             <table className="w-full border-collapse text-left text-sm">
-              <thead className="bg-[#f5f0eb] text-[#1a0533]">
+              <thead className="bg-[#f9f4ff] text-[#1a0533]">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Method</th>
                   <th className="px-4 py-3 font-semibold">Cost</th>

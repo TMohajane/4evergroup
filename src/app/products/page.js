@@ -31,7 +31,7 @@ export default function ProductsPage() {
             <div className="image-placeholder mb-4 flex h-40 items-center justify-center rounded-lg px-4 text-center text-sm">
               Product image placeholder: {product.name}
             </div>
-            <h2 className="text-xl font-semibold text-[#c5a355]">{product.name}</h2>
+            <h2 className="text-xl font-semibold text-[#D4A017]">{product.name}</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#f3e3b7]">
               {product.details.map((detail) => (
                 <li key={detail}>{detail}</li>
@@ -40,8 +40,8 @@ export default function ProductsPage() {
           </article>
         ))}
       </div>
-      <div className="card border-[#d4388e]/60 p-6">
-        <h2 className="text-2xl font-semibold text-[#d4388e]">Bundle Special</h2>
+      <div className="card border-[#E91E8C]/60 p-6">
+        <h2 className="text-2xl font-semibold text-[#E91E8C]">Bundle Special</h2>
         <p className="mt-2 text-[#f6dfef]">All 3 products for R710.00 (excluding delivery)</p>
       </div>
     </div>

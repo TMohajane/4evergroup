@@ -7,7 +7,7 @@ html {
 
 body {
   font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  background: #f5f0eb;
+  background: #f9f4ff;
   color: #1a0533;
 }
 
@@ -17,6 +17,6 @@ body {
 
 .hero-image-placeholder,
 .editorial-product-card {
-  background: linear-gradient(150deg, #e8e0d8, #d4c5b5);
-  border: 1px solid rgba(26, 5, 51, 0.08);
+  background: linear-gradient(150deg, #e8d5f7, #c9aee8);
+  border: 1px solid rgba(91, 13, 140, 0.08);
 }

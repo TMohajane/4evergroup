@@ -6,7 +6,7 @@ export default function RefundsPage() {
         <p className="text-sm text-[#4b3b60]">Last updated: 17 April 2026</p>
       </header>
 
-      <p className="rounded-2xl border border-[#1a0533]/10 bg-[#faf7f2] p-4 font-semibold text-[#1a0533]">
+      <p className="rounded-2xl border border-[#1a0533]/10 bg-[#f9f4ff] p-4 font-semibold text-[#1a0533]">
         Forever Glow operates a strict NO REFUND and NO RETURN policy on all products.
       </p>
 
