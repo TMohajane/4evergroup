@@ -318,7 +318,7 @@ export default function HomePage() {
       variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
     >
       <motion.section
-        className="relative min-h-screen overflow-hidden px-4 pb-24 pt-32 sm:px-8 lg:px-12"
+        className="relative flex min-h-screen items-center overflow-hidden px-4 pb-24 pt-32 sm:px-8 lg:px-12"
         onMouseMove={(event) => {
           const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
           setCursor({ x: ((event.clientX - left) / width) * 100, y: ((event.clientY - top) / height) * 100 });
@@ -331,44 +331,36 @@ export default function HomePage() {
           className="object-cover"
           priority
         />
+        {/* Subtle dark overlay for text readability — keeps background sharp and visible */}
         <motion.div
           style={{ y: heroGradientShift }}
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,rgba(245,240,235,0.82)_0%,rgba(239,231,226,0.75)_42%,rgba(232,221,242,0.80)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(10,0,30,0.58)_0%,rgba(26,5,51,0.42)_55%,rgba(80,20,70,0.50)_100%)]"
         />
         <motion.div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
-            background: `radial-gradient(320px at ${cursor.x}% ${cursor.y}%, rgba(212,56,142,0.25), transparent 70%)`,
+            background: `radial-gradient(380px at ${cursor.x}% ${cursor.y}%, rgba(212,56,142,0.22), transparent 70%)`,
           }}
         />
 
-        <motion.div style={{ y: heroParallax }} className="relative z-10 mx-auto grid w-full max-w-7xl items-end gap-12 lg:grid-cols-[1.08fr_0.92fr]">
+        <motion.div style={{ y: heroParallax }} className="relative z-10 mx-auto w-full max-w-4xl text-center">
           <motion.div initial="hidden" animate="show" variants={sectionReveal}>
-            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#d4388e]">Forever Glow Skincare</p>
-            <h2 className="hero-display mt-6 text-[clamp(2.4rem,5.6vw,5rem)] font-bold leading-[0.95] tracking-tight text-[#1a0533]">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#f4b8d4]">Forever Glow Skincare</p>
+            <h2 className="hero-display mt-6 text-[clamp(2.4rem,5.6vw,5rem)] font-bold leading-[1.0] tracking-tight text-white drop-shadow-lg">
               Glow-forward care made for{" "}
-              <span className="bg-gradient-to-r from-[#1a0533] via-[#7d49b2] to-[#d4388e] bg-clip-text text-transparent">visible confidence</span>
+              <span className="bg-gradient-to-r from-white via-[#f4c0da] to-[#d4388e] bg-clip-text text-transparent">visible confidence</span>
             </h2>
-            <p className="mt-6 max-w-xl text-lg text-[#4b3b60]">Editorial skincare essentials designed for vibrant, deeply hydrated skin.</p>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-white/85 drop-shadow">Editorial skincare essentials designed for vibrant, deeply hydrated skin.</p>
             <motion.a
               href="#products"
-              whileHover={{ scale: 1.03 }}
-              className="mt-10 inline-flex rounded-full border border-[#1a0533] px-8 py-3 text-sm font-medium transition hover:border-[#d4388e] hover:text-[#d4388e]"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 28px rgba(212,56,142,0.55)" }}
+              whileTap={{ scale: 0.97 }}
+              className="mt-10 inline-flex rounded-full border border-white/50 bg-white/10 px-9 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#d4388e] hover:bg-[#d4388e]"
             >
               Explore Products
             </motion.a>
           </motion.div>
-
-            <div className="relative h-[28rem] w-[min(28rem,88vw)] justify-self-end overflow-hidden rounded-[2rem] shadow-[0_35px_80px_rgba(26,5,51,0.16)]">
-              <Image
-                src="/photos/hero.jpg"
-                alt="Forever Glow skincare products"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
         </motion.div>
       </motion.section>
 
@@ -392,19 +384,24 @@ export default function HomePage() {
               href="https://wa.me/27717768306"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              className="mt-10 inline-flex rounded-full border border-[#1a0533] px-8 py-3 text-sm font-medium transition hover:border-[#d4388e] hover:text-[#d4388e]"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
+              whileTap={{ scale: 0.97 }}
+              className="mt-10 inline-flex rounded-full border border-[#1a0533] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#d4388e] hover:bg-[#d4388e] hover:text-white"
             >
               Order on WhatsApp
             </motion.a>
           </div>
-          <motion.div whileHover={{ scale: 1.03 }} className="mx-auto w-full max-w-sm">
-            <div className="relative h-[30rem] w-full -rotate-3 overflow-hidden rounded-3xl shadow-[0_35px_80px_rgba(26,5,51,0.16)]">
+          <motion.div
+            whileHover={{ scale: 1.04, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            className="mx-auto w-full max-w-sm"
+          >
+            <div className="relative h-[30rem] w-full -rotate-3 overflow-hidden rounded-3xl shadow-[0_35px_80px_rgba(26,5,51,0.16)] transition-shadow duration-300 hover:shadow-[0_40px_90px_rgba(212,56,142,0.22)]">
               <Image
                 src="/photos/hero1.jpg"
                 alt="Vibrant skin with Forever Glow skincare"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
           </motion.div>
@@ -425,8 +422,9 @@ export default function HomePage() {
             {products.map((product, index) => (
               <motion.article key={product.name} variants={cardReveal} className={`${index === 0 ? "sm:row-span-2" : ""}`}>
                 <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className={`editorial-product-card ${product.size} rounded-2xl p-6 shadow-[0_18px_45px_rgba(26,5,51,0.12)] transition-shadow duration-300 hover:shadow-xl`}
+                  whileHover={{ scale: 1.04, boxShadow: "0 24px 60px rgba(212,56,142,0.18)" }}
+                  transition={{ type: "spring", stiffness: 220, damping: 20 }}
+                  className={`editorial-product-card ${product.size} rounded-2xl p-6 shadow-[0_18px_45px_rgba(26,5,51,0.12)] transition-shadow duration-300`}
                 >
                   <p className="text-xs uppercase tracking-[0.18em] text-[#6f5f79]">Product</p>
                   <h3 className="mt-4 hero-display text-3xl font-bold tracking-tight text-[#1a0533]">{product.name}</h3>
@@ -479,20 +477,25 @@ export default function HomePage() {
                 href="https://wa.me/27717768306"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.03 }}
-                className="mt-8 inline-flex rounded-full border border-[#1a0533] px-8 py-3 text-sm font-medium transition hover:border-[#d4388e] hover:text-[#d4388e]"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
+                whileTap={{ scale: 0.97 }}
+                className="mt-8 inline-flex rounded-full border border-[#1a0533] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#d4388e] hover:bg-[#d4388e] hover:text-white"
               >
                 Get the bundle
               </motion.a>
             </motion.div>
-            <div className="relative h-[28rem] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(26,5,51,0.15)]">
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+              className="relative h-[28rem] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(26,5,51,0.15)] transition-shadow duration-300 hover:shadow-[0_30px_70px_rgba(212,56,142,0.22)]"
+            >
               <Image
                 src="/photos/product_bundle.jpeg"
                 alt="Forever Glow Complete Collection bundle — Facial Moisturizer, Body Butter, and Omega Tissue Oil"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-500 hover:scale-105"
               />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.section>
