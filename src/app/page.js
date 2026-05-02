@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, animate, motion, useInView, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 
 const aboutCopy = [
   "Forever Glow is an anti marks cream created to give you that vibrant deeply hydration on your skin. It removes acne, scars, dark marks, pigmentation and discoloration.",
@@ -73,9 +74,21 @@ const testimonials = [
 ];
 
 const beforeAfterItems = [
-  { caption: "Dark marks faded in 4 weeks" },
-  { caption: "Acne scars visibly reduced" },
-  { caption: "Even skin tone restored" },
+  {
+    caption: "Dark marks faded in 4 weeks",
+    beforeSrc: "/photos/dark_marks_before.jpeg",
+    afterSrc: "/photos/dark_marks_after.jpeg",
+  },
+  {
+    caption: "Acne scars visibly reduced",
+    beforeSrc: "/photos/acne_scars_before.jpeg",
+    afterSrc: "/photos/acne-scars_after.jpeg",
+  },
+  {
+    caption: "Even skin tone restored",
+    beforeSrc: "/photos/even_tone_before.jpeg",
+    afterSrc: "/photos/even_tone_after.jpeg",
+  },
 ];
 
 const sectionReveal = {
@@ -189,7 +202,7 @@ function WhatsAppIcon() {
   );
 }
 
-function BeforeAfterSlider({ caption, index }) {
+function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
   const [position, setPosition] = useState(50);
   const containerRef = useRef(null);
 
@@ -210,11 +223,28 @@ function BeforeAfterSlider({ caption, index }) {
         className="relative h-64 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#b39f92,#c8b8ab)]"
         onClick={(event) => updatePosition(event.clientX)}
       >
-        <div className="absolute inset-0 bg-[linear-gradient(130deg,rgba(26,5,51,0.35),rgba(26,5,51,0.08))]" />
-        <motion.div
-          className="absolute inset-y-0 left-0 bg-[linear-gradient(130deg,#f8e6dc,#f5f0eb,#fbe5ef)]"
-          style={{ width: `${position}%` }}
+        {/* After image — full-size base layer */}
+        <Image
+          src={afterSrc}
+          alt={`After — ${caption}`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
+
+        {/* Before image — same full size, clipped from the right using clip-path */}
+        <div
+          className="absolute inset-0"
+          style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+        >
+          <Image
+            src={beforeSrc}
+            alt={`Before — ${caption}`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </div>
 
         <div className="absolute left-4 top-4 rounded-full bg-[#1a0533]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white">
           Before
@@ -288,15 +318,22 @@ export default function HomePage() {
       variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
     >
       <motion.section
-        className="relative min-h-screen overflow-hidden bg-[linear-gradient(140deg,#f5f0eb_0%,#efe7e2_42%,#e8ddf2_100%)] px-4 pb-24 pt-32 sm:px-8 lg:px-12"
+        className="relative min-h-screen overflow-hidden px-4 pb-24 pt-32 sm:px-8 lg:px-12"
         onMouseMove={(event) => {
           const { left, top, width, height } = event.currentTarget.getBoundingClientRect();
           setCursor({ x: ((event.clientX - left) / width) * 100, y: ((event.clientY - top) / height) * 100 });
         }}
       >
+        <Image
+          src="/photos/hero.jpg"
+          alt="Forever Glow skincare hero background"
+          fill
+          className="object-cover"
+          priority
+        />
         <motion.div
           style={{ y: heroGradientShift }}
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_28%,rgba(212,56,142,0.18),transparent_55%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,rgba(245,240,235,0.82)_0%,rgba(239,231,226,0.75)_42%,rgba(232,221,242,0.80)_100%)]"
         />
         <motion.div
           aria-hidden="true"
@@ -323,14 +360,15 @@ export default function HomePage() {
             </motion.a>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.2, ease: "easeOut" }}
-            className="justify-self-end"
-          >
-            <div className="hero-image-placeholder h-[28rem] w-[min(28rem,88vw)] rounded-[2rem] shadow-[0_35px_80px_rgba(26,5,51,0.16)]" />
-          </motion.div>
+            <div className="relative h-[28rem] w-[min(28rem,88vw)] justify-self-end overflow-hidden rounded-[2rem] shadow-[0_35px_80px_rgba(26,5,51,0.16)]">
+              <Image
+                src="/photos/hero.jpg"
+                alt="Forever Glow skincare products"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
         </motion.div>
       </motion.section>
 
@@ -361,7 +399,14 @@ export default function HomePage() {
             </motion.a>
           </div>
           <motion.div whileHover={{ scale: 1.03 }} className="mx-auto w-full max-w-sm">
-            <div className="editorial-product-card h-[30rem] w-full -rotate-3 rounded-3xl" />
+            <div className="relative h-[30rem] w-full -rotate-3 overflow-hidden rounded-3xl shadow-[0_35px_80px_rgba(26,5,51,0.16)]">
+              <Image
+                src="/photos/hero1.jpg"
+                alt="Vibrant skin with Forever Glow skincare"
+                fill
+                className="object-cover"
+              />
+            </div>
           </motion.div>
         </div>
       </motion.section>
@@ -420,7 +465,7 @@ export default function HomePage() {
           <h2 className="hero-display text-[clamp(2.2rem,4.8vw,4.5rem)] font-bold tracking-tight text-[#1a0533]">Complete Collection</h2>
           <p className="mt-4 text-lg text-gray-600">Complete Collection - All 3 for R710.00 (excluding delivery)</p>
 
-          <motion.div variants={cardReveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 max-w-3xl">
+          <motion.div variants={cardReveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
             <motion.div whileHover={{ scale: 1.02 }} className="rounded-2xl border border-[#1a0533]/20 bg-white/30 p-8 shadow-[0_15px_40px_rgba(26,5,51,0.12)] backdrop-blur-md transition-shadow duration-300 hover:shadow-xl">
               <h3 className="hero-display text-[clamp(1.8rem,3.6vw,3rem)] font-bold tracking-tight text-[#1a0533]">
                 Bundle your <span className="italic">glow routine</span>
@@ -440,6 +485,14 @@ export default function HomePage() {
                 Get the bundle
               </motion.a>
             </motion.div>
+            <div className="relative h-[28rem] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(26,5,51,0.15)]">
+              <Image
+                src="/photos/product_bundle.jpeg"
+                alt="Forever Glow Complete Collection bundle — Facial Moisturizer, Body Butter, and Omega Tissue Oil"
+                fill
+                className="object-cover"
+              />
+            </div>
           </motion.div>
         </div>
       </motion.section>
@@ -580,7 +633,7 @@ export default function HomePage() {
           <p className="mt-4 max-w-2xl text-lg text-[#4b3b60]">Drag the slider to compare before and after results from our routine.</p>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-6 md:grid-cols-3">
             {beforeAfterItems.map((item, index) => (
-              <BeforeAfterSlider key={item.caption} index={index} caption={item.caption} />
+              <BeforeAfterSlider key={item.caption} index={index} caption={item.caption} beforeSrc={item.beforeSrc} afterSrc={item.afterSrc} />
             ))}
           </motion.div>
         </div>
