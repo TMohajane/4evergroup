@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-
-const SCROLL_THRESHOLD = 24;
 
 const links = [
   { href: "/#about", label: "About" },
@@ -24,34 +21,18 @@ function WhatsAppIcon() {
 }
 
 export default function SiteHeader() {
-  const pathname = usePathname();
-  const isHomeRoute = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(!isHomeRoute || window.scrollY > SCROLL_THRESHOLD);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isHomeRoute]);
-
-  const baseText = scrolled ? "text-[#1a0533]" : "text-[#1a0533]";
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#f9f4ff]/95 shadow-sm backdrop-blur" : "bg-transparent"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#3A0060] shadow-lg">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center">
-          <img src="/photos/logo.png" alt="Forever Group of Companies" width="280" height="112" className="h-20 w-auto sm:h-28" />
+          <img src="/photos/icon.png" alt="Forever Group of Companies" width="90" height="90" className="h-[90px] w-auto" />
         </Link>
 
-        <nav className={`hidden items-center gap-8 text-sm font-medium md:flex ${baseText}`}>
+        <nav className="hidden items-center gap-8 text-sm font-medium md:flex text-white">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="transition hover:text-[#E91E8C]">
+            <Link key={link.href} href={link.href} className="transition hover:text-[#FFD700]">
               {link.label}
             </Link>
           ))}
@@ -68,9 +49,7 @@ export default function SiteHeader() {
 
         <button
           type="button"
-          className={`inline-flex h-10 w-10 items-center justify-center rounded-full border ${
-            scrolled ? "border-[#1a0533]/20 text-[#1a0533]" : "border-[#1a0533]/25 text-[#1a0533]"
-          } md:hidden`}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white md:hidden"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -86,11 +65,11 @@ export default function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="border-t border-[#5B0D8C]/10 bg-[#f9f4ff] px-4 py-5 md:hidden"
+            className="border-t border-white/20 bg-[#3A0060] px-4 py-5 md:hidden"
           >
-            <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 text-[#1a0533]">
+            <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 text-white">
               {links.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="transition hover:text-[#E91E8C]">
+                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="transition hover:text-[#FFD700]">
                   {link.label}
                 </Link>
               ))}

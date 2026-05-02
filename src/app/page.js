@@ -57,19 +57,19 @@ const testimonials = [
     quote:
       "Forever Glow completely transformed my skin. The dark marks I had for years started fading within weeks. I cannot recommend it enough.",
     name: "Thandi",
-    tint: "bg-[#E91E8C]",
+    tint: "bg-[#FF0080]",
   },
   {
     quote:
       "The body butter is absolutely amazing. My skin has never felt this soft and hydrated. The scent is heavenly too.",
     name: "Lerato",
-    tint: "bg-[#5B0D8C]",
+    tint: "bg-[#3A0060]",
   },
   {
     quote:
       "I was skeptical at first but the results speak for themselves. My acne scars have visibly reduced and my skin glows.",
     name: "Naledi",
-    tint: "bg-[#D4A017]",
+    tint: "bg-[#FFD700]",
   },
 ];
 
@@ -139,7 +139,7 @@ function CountUpNumber({ value, suffix }) {
 
 function QuoteIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-8 w-8 text-[#E91E8C]" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-8 w-8 text-[#FF0080]" aria-hidden="true">
       <path
         fill="currentColor"
         d="M10.5 5.5C6.9 7.2 5 10 5 13.9A4.1 4.1 0 0 0 9.1 18c2.3 0 4.1-1.8 4.1-4.1A4.1 4.1 0 0 0 9.1 9.8c-.5 0-.9.1-1.4.2.7-1.6 2-2.8 3.8-3.8l-1-1Zm8 0C14.9 7.2 13 10 13 13.9a4.1 4.1 0 0 0 4.1 4.1c2.3 0 4.1-1.8 4.1-4.1a4.1 4.1 0 0 0-4.1-4.1c-.5 0-.9.1-1.4.2.7-1.6 2-2.8 3.8-3.8l-1-1Z"
@@ -150,7 +150,7 @@ function QuoteIcon() {
 
 function StarIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#D4A017]" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#FFD700]" aria-hidden="true">
       <path
         fill="currentColor"
         d="m12 2.4 2.96 6 6.62.96-4.79 4.67 1.13 6.6L12 17.5l-5.92 3.13 1.13-6.6L2.4 9.36l6.62-.96L12 2.4Z"
@@ -177,7 +177,7 @@ function ChevronRightIcon() {
 
 function LeafIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6 text-[#D4A017]" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-6 w-6 text-[#FFD700]" aria-hidden="true">
       <path fill="currentColor" d="M20 4.5c-8 .2-13 4.6-13.5 11.8A6.5 6.5 0 0 0 13 22c5.6 0 8.5-5.4 8.5-11.8V4.5H20Zm-9.2 12.1a8.9 8.9 0 0 1 6.2-6.4l.5 1.6a7.4 7.4 0 0 0-5 5.1l-1.7-.3Z" />
     </svg>
   );
@@ -185,7 +185,7 @@ function LeafIcon() {
 
 function DropIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6 text-[#E91E8C]" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-6 w-6 text-[#FF0080]" aria-hidden="true">
       <path fill="currentColor" d="M12 2.5S5 10.3 5 14.7A7 7 0 1 0 19 14.7C19 10.3 12 2.5 12 2.5Zm0 16.7a5.2 5.2 0 0 1-5.2-5.2c0-2.4 3-6.5 5.2-9 2.2 2.5 5.2 6.6 5.2 9A5.2 5.2 0 0 1 12 19.2Z" />
     </svg>
   );
@@ -220,7 +220,7 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
     >
       <div
         ref={containerRef}
-        className="relative h-64 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#8E24BE,#5B0D8C)]"
+        className="relative h-64 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#8E24BE,#3A0060)]"
         onClick={(event) => updatePosition(event.clientX)}
       >
         {/* After image — full-size base layer */}
@@ -249,7 +249,7 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
         <div className="absolute left-4 top-4 rounded-full bg-[#1a0533]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white">
           Before
         </div>
-        <div className="absolute right-4 top-4 rounded-full bg-[#E91E8C]/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white">
+        <div className="absolute right-4 top-4 rounded-full bg-[#FF0080]/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white">
           After
         </div>
 
@@ -270,8 +270,8 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
           </div>
         </motion.div>
       </div>
-      <p className="mt-4 text-center text-sm font-medium text-[#4b3b60]">{caption}</p>
-      <p className="mt-1 text-center text-xs uppercase tracking-[0.12em] text-[#D4A017]">Comparison {index + 1}</p>
+      <p className="mt-4 text-center text-sm font-medium text-[#3A0060]">{caption}</p>
+      <p className="mt-1 text-center text-xs uppercase tracking-[0.12em] text-[#FFD700]">Comparison {index + 1}</p>
     </motion.article>
   );
 }
@@ -349,14 +349,14 @@ export default function HomePage() {
             <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#f4b8d4]">Forever Glow Skincare</p>
             <h2 className="hero-display mt-6 text-[clamp(2.4rem,5.6vw,5rem)] font-bold leading-[1.0] tracking-tight text-white drop-shadow-lg">
               Glow-forward care made for{" "}
-              <span className="bg-gradient-to-r from-white via-[#f4c0da] to-[#E91E8C] bg-clip-text text-transparent">visible confidence</span>
+              <span className="bg-gradient-to-r from-white via-[#f4c0da] to-[#FF0080] bg-clip-text text-transparent">visible confidence</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg text-white/85 drop-shadow">Editorial skincare essentials designed for vibrant, deeply hydrated skin.</p>
             <motion.a
               href="#products"
               whileHover={{ scale: 1.05, boxShadow: "0 0 28px rgba(212,56,142,0.55)" }}
               whileTap={{ scale: 0.97 }}
-              className="mt-10 inline-flex rounded-full border border-white/50 bg-white/10 px-9 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#E91E8C] hover:bg-[#E91E8C]"
+              className="mt-10 inline-flex rounded-full border border-white/50 bg-white/10 px-9 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#FF0080] hover:bg-[#FF0080]"
             >
               Explore Products
             </motion.a>
@@ -372,7 +372,7 @@ export default function HomePage() {
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
       >
-        <motion.div style={{ y: aboutParallax }} className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#E91E8C]/10 blur-3xl" />
+        <motion.div style={{ y: aboutParallax }} className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#FF0080]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <h2 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#1a0533]">
@@ -386,7 +386,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
               whileTap={{ scale: 0.97 }}
-              className="mt-10 inline-flex rounded-full border border-[#1a0533] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#E91E8C] hover:bg-[#E91E8C] hover:text-white"
+              className="mt-10 inline-flex rounded-full border border-[#3A0060] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#FF0080] hover:bg-[#FF0080] hover:text-white"
             >
               Order on WhatsApp
             </motion.a>
@@ -416,7 +416,7 @@ export default function HomePage() {
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden bg-white px-4 py-28 sm:px-8 lg:px-12"
       >
-        <motion.div style={{ y: productParallax }} className="pointer-events-none absolute left-0 top-10 h-64 w-64 rounded-full bg-[#5B0D8C]/10 blur-3xl" />
+        <motion.div style={{ y: productParallax }} className="pointer-events-none absolute left-0 top-10 h-64 w-64 rounded-full bg-[#3A0060]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-start gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="grid gap-6 sm:grid-cols-2">
             {products.map((product, index) => (
@@ -426,7 +426,7 @@ export default function HomePage() {
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
                   className={`editorial-product-card ${product.size} rounded-2xl p-6 shadow-[0_18px_45px_rgba(26,5,51,0.12)] transition-shadow duration-300`}
                 >
-                  <p className="text-xs uppercase tracking-[0.18em] text-[#6f5f79]">Product</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-[#3A0060]">Product</p>
                   <h3 className="mt-4 hero-display text-3xl font-bold tracking-tight text-[#1a0533]">{product.name}</h3>
                   <p className="mt-2 text-[#1a0533]">{product.price}</p>
                 </motion.div>
@@ -479,7 +479,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-8 inline-flex rounded-full border border-[#1a0533] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#E91E8C] hover:bg-[#E91E8C] hover:text-white"
+                className="mt-8 inline-flex rounded-full border border-[#3A0060] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#FF0080] hover:bg-[#FF0080] hover:text-white"
               >
                 Get the bundle
               </motion.a>
@@ -506,23 +506,23 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#1a0533] px-4 py-28 text-[#f5e0a0] sm:px-8 lg:px-12"
+        className="bg-[#3A0060] px-4 py-28 text-white sm:px-8 lg:px-12"
       >
         <div className="mx-auto w-full max-w-7xl">
-          <p className="inline-flex rounded-full border border-[#E91E8C]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#E91E8C]">By The Numbers</p>
+          <p className="inline-flex rounded-full border border-[#FF0080]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#FF0080]">By The Numbers</p>
           <h2 className="mt-6 hero-display text-[clamp(2.2rem,5vw,4.5rem)] font-bold tracking-tight">
-            Proven <span className="text-[#D4A017]">Results</span>
+            Proven <span className="text-[#FFD700]">Results</span>
           </h2>
 
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {provenResults.map((result) => (
-              <motion.article key={result.label} variants={cardReveal} className="rounded-2xl border border-[#D4A017]/25 bg-white/5 p-6">
-                <p className="hero-display text-5xl font-bold leading-none text-[#f5e0a0]">
+              <motion.article key={result.label} variants={cardReveal} className="rounded-2xl border border-[#FFD700]/25 bg-white/5 p-6">
+                <p className="hero-display text-5xl font-bold leading-none text-white">
                   <CountUpNumber value={result.value} suffix={result.suffix} />
                 </p>
-                <div className="mt-3 h-1 w-12 rounded-full bg-[#E91E8C]" />
-                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-[#D4A017]">{result.label}</p>
-                <p className="mt-2 text-sm text-[#e8c050]">{result.note}</p>
+                <div className="mt-3 h-1 w-12 rounded-full bg-[#FF0080]" />
+                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.14em] text-[#FFD700]">{result.label}</p>
+                <p className="mt-2 text-sm text-[#FFD700]/80">{result.note}</p>
               </motion.article>
             ))}
           </motion.div>
@@ -537,10 +537,10 @@ export default function HomePage() {
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden bg-[#f9f4ff] px-4 py-28 sm:px-8 lg:px-12"
       >
-        <div className="pointer-events-none absolute right-16 top-20 h-52 w-52 rounded-full bg-gradient-to-br from-[#5B0D8C]/30 to-[#E91E8C]/10 blur-3xl" />
+        <div className="pointer-events-none absolute right-16 top-20 h-52 w-52 rounded-full bg-gradient-to-br from-[#3A0060]/30 to-[#FF0080]/10 blur-3xl" />
         <div className="mx-auto w-full max-w-7xl">
           <h2 className="hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">What Our Clients Say</h2>
-          <div className="mt-12 rounded-3xl border border-[#1a0533]/10 bg-[#1d0c36] p-8 text-[#f5e0a0] shadow-[0_22px_60px_rgba(26,5,51,0.3)] sm:p-10">
+          <div className="mt-12 rounded-3xl border border-[#FF0080]/20 bg-[#3A0060] p-8 text-white shadow-[0_22px_60px_rgba(58,0,96,0.4)] sm:p-10">
             <div className="relative overflow-hidden">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.article
@@ -558,7 +558,7 @@ export default function HomePage() {
                       <StarIcon key={starIndex} />
                     ))}
                   </div>
-                  <p className="mt-6 text-xl italic leading-9 text-[#f5e0a0]">“{activeItem.quote}”</p>
+                  <p className="mt-6 text-xl italic leading-9 text-white">“{activeItem.quote}”</p>
                   <div className="mt-8 flex items-center gap-4">
                     <div className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-semibold text-white ${activeItem.tint}`}>
                       {activeItem.name
@@ -569,7 +569,7 @@ export default function HomePage() {
                     </div>
                     <div>
                       <p className="font-semibold text-white">{activeItem.name}</p>
-                      <p className="text-sm text-[#D4A017]">Forever Glow Client</p>
+                      <p className="text-sm text-[#FFD700]">Forever Glow Client</p>
                     </div>
                   </div>
                 </motion.article>
@@ -581,14 +581,14 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setIsAutoPlay((current) => !current)}
-                  className="inline-flex h-10 items-center rounded-full border border-white/20 px-4 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:border-[#E91E8C] hover:text-[#E91E8C]"
+                  className="inline-flex h-10 items-center rounded-full border border-white/20 px-4 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:border-[#FF0080] hover:text-[#FF0080]"
                 >
                   {isAutoPlay ? "Pause" : "Play"}
                 </button>
                 <button
                   type="button"
                   onClick={() => paginate(-1)}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#E91E8C] hover:text-[#E91E8C]"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#FF0080] hover:text-[#FF0080]"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeftIcon />
@@ -596,7 +596,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => paginate(1)}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#E91E8C] hover:text-[#E91E8C]"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#FF0080] hover:text-[#FF0080]"
                   aria-label="Next testimonial"
                 >
                   <ChevronRightIcon />
@@ -612,7 +612,7 @@ export default function HomePage() {
                       setActiveTestimonial(index);
                     }}
                     className={`h-2 rounded-full transition-all ${
-                      index === activeTestimonial ? "w-8 bg-[#E91E8C]" : "w-2 bg-white/40 hover:bg-white/70"
+                      index === activeTestimonial ? "w-8 bg-[#FF0080]" : "w-2 bg-white/40 hover:bg-white/70"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -633,7 +633,7 @@ export default function HomePage() {
       >
         <div className="mx-auto w-full max-w-7xl">
           <h2 className="hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">Real Results, Real Glow</h2>
-          <p className="mt-4 max-w-2xl text-lg text-[#4b3b60]">Drag the slider to compare before and after results from our routine.</p>
+          <p className="mt-4 max-w-2xl text-lg text-[#3A0060]">Drag the slider to compare before and after results from our routine.</p>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-6 md:grid-cols-3">
             {beforeAfterItems.map((item, index) => (
               <BeforeAfterSlider key={item.caption} index={index} caption={item.caption} beforeSrc={item.beforeSrc} afterSrc={item.afterSrc} />
@@ -663,12 +663,12 @@ export default function HomePage() {
                   className="grid gap-6 rounded-3xl border border-[#1a0533]/10 bg-[#f9f4ff]/90 p-7 shadow-[0_16px_40px_rgba(26,5,51,0.08)] lg:grid-cols-[0.22fr_0.78fr]"
                 >
                   <div className={`flex flex-col items-start gap-4 ${reversed ? "lg:order-2" : ""}`}>
-                    <p className="hero-display text-5xl leading-none text-[#D4A017]">{String(index + 1).padStart(2, "0")}</p>
+                    <p className="hero-display text-5xl leading-none text-[#FFD700]">{String(index + 1).padStart(2, "0")}</p>
                     <div className="rounded-full bg-white p-3 shadow-sm">{index % 2 === 0 ? <LeafIcon /> : <DropIcon />}</div>
                   </div>
                   <div className={reversed ? "lg:order-1" : ""}>
                     <h3 className="hero-display text-[clamp(1.6rem,3vw,2.3rem)] font-bold tracking-tight text-[#1a0533]">{ingredient.title}</h3>
-                    <p className="mt-4 text-base leading-8 text-[#4b3b60]">{ingredient.copy}</p>
+                    <p className="mt-4 text-base leading-8 text-[#3A0060]">{ingredient.copy}</p>
                   </div>
                 </motion.article>
               );
@@ -700,7 +700,7 @@ export default function HomePage() {
                     href="https://wa.me/27717768306"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#1a0533] underline decoration-[#E91E8C] underline-offset-4"
+                    className="inline-flex items-center gap-2 text-[#1a0533] underline decoration-[#FF0080] underline-offset-4"
                   >
                     <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#25D366] text-white">
                       <WhatsAppIcon />
@@ -730,13 +730,13 @@ export default function HomePage() {
               },
             ].map((step, index, arr) => (
               <div key={step.title} className="relative pl-16">
-                {index < arr.length - 1 && <div className="absolute left-6 top-12 h-[calc(100%-0.5rem)] w-px bg-[#E91E8C]/40" aria-hidden="true" />}
-                <div className="absolute left-0 top-1 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#5B0D8C] to-[#E91E8C] text-lg font-semibold text-white">
+                {index < arr.length - 1 && <div className="absolute left-6 top-12 h-[calc(100%-0.5rem)] w-px bg-[#FF0080]/40" aria-hidden="true" />}
+                <div className="absolute left-0 top-1 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#3A0060] to-[#FF0080] text-lg font-semibold text-white">
                   {index + 1}
                 </div>
                 <motion.article whileHover={{ y: -3 }} className="rounded-2xl border border-[#1a0533]/10 bg-[#f9f4ff] p-6 transition-shadow hover:shadow-lg">
                   <h3 className="hero-display text-2xl font-bold tracking-tight text-[#1a0533]">{step.title}</h3>
-                  <div className="mt-3 text-[#4b3b60]">{step.description}</div>
+                  <div className="mt-3 text-[#3A0060]">{step.description}</div>
                 </motion.article>
               </div>
             ))}

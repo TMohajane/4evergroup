@@ -81,12 +81,12 @@ export default function RootLayout({ children }) {
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
-          <footer className="bg-[#1a0533] px-4 py-14 text-[#D4A017] sm:px-8 lg:px-12">
+          <footer className="bg-[#3A0060] px-4 py-14 text-[#FFD700] sm:px-8 lg:px-12">
             <div className="mx-auto w-full max-w-7xl">
               <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
                 <div>
-                  <p className="hero-display text-3xl font-semibold tracking-tight text-[#f5e0a0]">Forever Glow</p>
-                  <p className="mt-4 max-w-xs text-sm leading-7 text-[#e8c050]">Radiant skincare essentials designed for confident, everyday glow.</p>
+                  <p className="hero-display text-3xl font-semibold tracking-tight text-white">Forever Glow</p>
+                  <p className="mt-4 max-w-xs text-sm leading-7 text-[#FFD700]">Radiant skincare essentials designed for confident, everyday glow.</p>
                   <div className="mt-5 flex items-center gap-3">
                     <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] transition duration-300 hover:-translate-y-0.5 hover:scale-105">
                       <WhatsAppIcon className="h-5 w-5 text-white" />
@@ -101,8 +101,8 @@ export default function RootLayout({ children }) {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Quick Links</p>
-                  <ul className="mt-4 space-y-3 text-sm text-[#e8c050]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">Quick Links</p>
+                  <ul className="mt-4 space-y-3 text-sm text-[#FFD700]">
                     {[
                       { href: "#about", label: "About" },
                       { href: "#products", label: "Products" },
@@ -110,15 +110,15 @@ export default function RootLayout({ children }) {
                       { href: "#order", label: "How to Order" },
                     ].map((item) => (
                       <li key={item.href}>
-                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f5e0a0]">
+                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-white">
                           <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                           <span>{item.label}</span>
                         </a>
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Policies</p>
-                  <ul className="mt-4 space-y-3 text-sm text-[#e8c050]">
+                  <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-white">Policies</p>
+                  <ul className="mt-4 space-y-3 text-sm text-[#FFD700]">
                     {[
                       { href: "/terms", label: "Terms & Conditions" },
                       { href: "/privacy", label: "Privacy Policy" },
@@ -127,7 +127,7 @@ export default function RootLayout({ children }) {
                       { href: "/disclaimer", label: "Medical Disclaimer" },
                     ].map((item) => (
                       <li key={item.href}>
-                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-[#f5e0a0]">
+                        <a href={item.href} className="group inline-flex items-center gap-2 transition hover:text-white">
                           <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                           <span>{item.label}</span>
                         </a>
@@ -137,29 +137,29 @@ export default function RootLayout({ children }) {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Contact</p>
-                  <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 text-sm text-[#e8c050] transition hover:text-[#f5e0a0]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">Contact</p>
+                  <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-2 text-sm text-[#FFD700] transition hover:text-white">
                     <WhatsAppIcon className="h-5 w-5 text-[#25D366]" />
                     <span>071 776 8306</span>
                   </a>
-                  <p className="mt-3 flex items-center gap-2 text-sm text-[#e8c050]">
-                    <MapPinIcon className="h-5 w-5 text-[#D4A017]" />
+                  <p className="mt-3 flex items-center gap-2 text-sm text-[#FFD700]">
+                    <MapPinIcon className="h-5 w-5 text-[#FFD700]" />
                     <span>Midrand &amp; Joburg, South Africa</span>
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#f5e0a0]">Follow Us</p>
-                  <div className="mt-4 space-y-3 text-sm text-[#e8c050]">
-                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f5e0a0]" aria-label="Instagram">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">Follow Us</p>
+                  <div className="mt-4 space-y-3 text-sm text-[#FFD700]">
+                    <a href="#" className="flex items-center gap-2 transition hover:text-white" aria-label="Instagram">
                       <InstagramIcon className="h-5 w-5" />
                       <span>Instagram</span>
                     </a>
-                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f5e0a0]" aria-label="Facebook">
+                    <a href="#" className="flex items-center gap-2 transition hover:text-white" aria-label="Facebook">
                       <FacebookIcon className="h-5 w-5" />
                       <span>Facebook</span>
                     </a>
-                    <a href="#" className="flex items-center gap-2 transition hover:text-[#f5e0a0]" aria-label="TikTok">
+                    <a href="#" className="flex items-center gap-2 transition hover:text-white" aria-label="TikTok">
                       <TikTokIcon className="h-5 w-5 text-white" />
                       <span>TikTok</span>
                     </a>
@@ -167,7 +167,7 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-col gap-4 border-t border-[#D4A017]/25 pt-6 text-sm text-[#e8c050] md:flex-row md:items-center md:justify-between">
+              <div className="mt-10 flex flex-col gap-4 border-t border-[#FFD700]/30 pt-6 text-sm text-[#FFD700] md:flex-row md:items-center md:justify-between">
                 <p>© 2026 Forever Group of Companies. All rights reserved.</p>
                 <p>
                   Built with ❤️ by{" "}
@@ -175,7 +175,7 @@ export default function RootLayout({ children }) {
                     href="https://github.com/TMohajane/c401-studios"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline decoration-[#E91E8C] underline-offset-4 transition hover:text-[#f5e0a0]"
+                    className="underline decoration-[#FF0080] underline-offset-4 transition hover:text-white"
                   >
                     c401 studios
                   </a>
