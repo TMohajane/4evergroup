@@ -33,7 +33,7 @@ export default function IngredientsPage() {
       <div className="grid gap-4 md:grid-cols-2">
         {ingredients.map((ingredient) => (
           <article key={ingredient.title} className="card p-5">
-            <h2 className="text-xl font-semibold text-[#c5a355]">{ingredient.title}</h2>
+            <h2 className="text-xl font-semibold text-[#D4A017]">{ingredient.title}</h2>
             <p className="mt-3 text-sm text-[#f3e3b7]">{ingredient.description}</p>
           </article>
         ))}

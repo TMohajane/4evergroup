@@ -41,17 +41,17 @@ export default function SiteHeader() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#f5f0eb]/95 shadow-sm backdrop-blur" : "bg-transparent"
+        scrolled ? "bg-[#f9f4ff]/95 shadow-sm backdrop-blur" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-5 sm:px-8 lg:px-12">
-        <Link href="/" className={`hero-display text-3xl font-bold tracking-tight ${baseText}`}>
-          Forever Glow
+        <Link href="/" className="flex items-center">
+          <img src="/photos/logo.png" alt="Forever Group of Companies" className="h-14 w-auto" />
         </Link>
 
         <nav className={`hidden items-center gap-8 text-sm font-medium md:flex ${baseText}`}>
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="transition hover:text-[#d4388e]">
+            <Link key={link.href} href={link.href} className="transition hover:text-[#E91E8C]">
               {link.label}
             </Link>
           ))}
@@ -86,11 +86,11 @@ export default function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="border-t border-[#1a0533]/10 bg-[#f5f0eb] px-4 py-5 md:hidden"
+            className="border-t border-[#5B0D8C]/10 bg-[#f9f4ff] px-4 py-5 md:hidden"
           >
             <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 text-[#1a0533]">
               {links.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="transition hover:text-[#d4388e]">
+                <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="transition hover:text-[#E91E8C]">
                   {link.label}
                 </Link>
               ))}
