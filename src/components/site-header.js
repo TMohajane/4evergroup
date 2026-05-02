@@ -44,9 +44,9 @@ export default function SiteHeader() {
         scrolled ? "bg-[#f9f4ff]/95 shadow-sm backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-5 sm:px-8 lg:px-12">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center">
-          <img src="/photos/logo.png" alt="Forever Group of Companies" width="160" height="56" className="h-14 w-auto" />
+          <img src="/photos/logo.png" alt="Forever Group of Companies" width="280" height="112" className="h-20 w-auto sm:h-28" />
         </Link>
 
         <nav className={`hidden items-center gap-8 text-sm font-medium md:flex ${baseText}`}>
