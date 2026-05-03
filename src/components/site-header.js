@@ -10,6 +10,7 @@ const links = [
   { href: "/#products", label: "Products" },
   { href: "/#ingredients", label: "Ingredients" },
   { href: "/#order", label: "How to Order" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 function WhatsAppIcon() {
