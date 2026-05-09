@@ -1,5 +1,5 @@
 import { initializeApp, getApps } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmf_hxomlLEJDbPKLWaB9Y3eMXiDm7MuE",
@@ -15,11 +15,13 @@ const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0
 
 export { app };
 
-export async function initAnalytics() {
-  const supported = await isSupported();
-  if (supported) {
+export function initAnalytics() {
+  try {
     const analytics = getAnalytics(app);
+    console.log("[Firebase] Analytics initialised ✅", analytics);
     return analytics;
+  } catch (error) {
+    console.error("[Firebase] Analytics error:", error);
+    return null;
   }
-  return null;
 }
