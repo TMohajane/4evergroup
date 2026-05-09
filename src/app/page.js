@@ -446,11 +446,11 @@ export default function HomePage() {
         <motion.div style={{ y: aboutParallax }} className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#FF0080]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <motion.div
-            whileHover={{ scale: 1.03, rotate: 0 }}
+            whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
             className="order-1 mx-auto w-full max-w-sm lg:order-2"
           >
-            <div className="relative h-[30rem] w-full -rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 hover:rotate-0">
+            <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0">
               <Image
                 src="/photos/hero1.jpg"
                 alt="Founder Ntsako Mabunda"
