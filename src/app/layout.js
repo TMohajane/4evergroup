@@ -3,6 +3,7 @@ import SiteHeader from "@/components/site-header";
 import WhatsAppButton from "@/components/whatsapp-button";
 import PageTransition from "@/components/page-transition";
 import ScrollProgress from "@/components/scroll-progress";
+import AnalyticsProvider from "@/components/analytics-provider";
 
 function WhatsAppIcon({ className = "h-5 w-5" }) {
   return (
@@ -206,6 +207,7 @@ export default function RootLayout({ children }) {
           </footer>
         </div>
         <WhatsAppButton />
+        <AnalyticsProvider />
       </body>
     </html>
   );
