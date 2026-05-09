@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, animate, motion, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const aboutCopy = {
   heading: "The Visionary Behind Forever Group",
@@ -262,7 +263,7 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
   return (
     <motion.article
       variants={cardReveal}
-      className="rounded-3xl bg-white p-5 shadow-[0_6px_24px_rgba(26,5,51,0.07)]"
+      className="rounded-3xl bg-[#f9f4ff] p-5 shadow-[0_6px_24px_rgba(26,5,51,0.07)]"
     >
       <div
         ref={containerRef}
@@ -422,16 +423,37 @@ export default function HomePage() {
               Glow-forward care made for{" "}
               <span className="bg-gradient-to-r from-white via-[#f4c0da] to-[#FF0080] bg-clip-text text-transparent">visible confidence</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-white/85 drop-shadow">Editorial skincare essentials designed for vibrant, deeply hydrated skin.</p>
-            <motion.a
-              href="#products"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 28px rgba(212,56,142,0.55)" }}
-              whileTap={{ scale: 0.97 }}
-              className="mt-10 inline-flex rounded-full border border-white/50 bg-white/10 px-9 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#FF0080] hover:bg-[#FF0080]"
-            >
-              Explore Products
-            </motion.a>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-white/85 drop-shadow">South Africa's favourite natural skincare — crafted for radiant, confident skin.</p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <motion.a
+                href="#products"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 28px rgba(255,0,128,0.55)" }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex rounded-full bg-gradient-to-r from-[#FF0080] to-[#3A0060] px-9 py-3.5 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:border hover:border-white"
+              >
+                Explore Products
+              </motion.a>
+              <motion.a
+                href="#about"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex rounded-full border border-white/60 px-9 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/10"
+              >
+                Our Story →
+              </motion.a>
+            </div>
           </motion.div>
+        </motion.div>
+
+        {/* Bouncing scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg viewBox="0 0 24 24" className="h-8 w-8 text-white/70" aria-hidden="true">
+            <path fill="currentColor" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41Z" />
+          </svg>
         </motion.div>
       </motion.section>
 
@@ -450,7 +472,7 @@ export default function HomePage() {
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
             className="order-1 mx-auto w-full max-w-sm lg:order-2"
           >
-            <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0">
+            <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0 ring-4 ring-[#FFD700]/30 ring-offset-4">
               <Image
                 src="/photos/hero1.jpg"
                 alt="Founder Ntsako Mabunda"
@@ -460,16 +482,18 @@ export default function HomePage() {
             </div>
           </motion.div>
           <div className="order-2 lg:order-1">
-            <h2 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#3A0060]">{aboutCopy.heading}</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Our Story</p>
+            <h2 className="hero-display mt-4 text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#3A0060]">{aboutCopy.heading}</h2>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">{aboutCopy.intro[0]}</p>
             <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
-            <div className="mt-10 border-l border-[#FFD700] pl-4">
-              <h3 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[0].title}</h3>
+            <div className="my-8 h-px w-full bg-[#FFD700]/50" />
+            <div className="mt-2 border-l border-[#FFD700] pl-4">
+              <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[0].title}</h3>
             </div>
             <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
             <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
             <div className="mt-10 border-l border-[#FFD700] pl-4">
-              <h3 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[1].title}</h3>
+              <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[1].title}</h3>
             </div>
             <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
             <motion.a
@@ -492,18 +516,21 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden bg-white px-4 py-28 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-white px-4 py-32 sm:px-8 lg:px-12"
       >
         <motion.div style={{ y: productParallax }} className="pointer-events-none absolute left-0 top-10 h-64 w-64 rounded-full bg-[#3A0060]/10 blur-3xl" />
         <div className="mx-auto w-full max-w-7xl">
           <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF0080]">Our Collection</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Our Collection</p>
               <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.7vw,4.4rem)] font-bold leading-[1.06] tracking-tight text-[#1a0533]">
                 Pure care <span className="italic">by nature</span>
               </h2>
             </div>
-            <p className="max-w-sm text-lg text-gray-600">Luxury textures, intentional ingredients, and a radiant finish made for everyday confidence.</p>
+            <div className="flex flex-col items-start gap-4 lg:items-end">
+              <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-xs font-bold text-[#3A0060] shadow-sm">Save R59 on the bundle</span>
+              <p className="max-w-sm text-lg text-gray-600">Luxury textures, intentional ingredients, and a radiant finish made for everyday confidence.</p>
+            </div>
           </div>
           <motion.div
             variants={stagger}
@@ -516,7 +543,7 @@ export default function HomePage() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                className="editorial-product-card rounded-3xl bg-[#fdf8ff] p-8 shadow-sm"
+                className="editorial-product-card relative overflow-hidden rounded-3xl bg-[#fdf8ff] p-8 shadow-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-3xl before:bg-[radial-gradient(circle_at_50%_0%,rgba(255,0,128,0.07),transparent_70%)]"
               >
                 <div className="relative h-[26rem] w-full">
                   <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority />
@@ -524,6 +551,14 @@ export default function HomePage() {
                 <div className="pt-5 text-center">
                   <h3 className="hero-display text-2xl font-bold tracking-tight text-[#3A0060]">{products[0].name}</h3>
                   <p className="mt-2 text-base font-semibold text-[#FFD700]">{products[0].price}</p>
+                  <a
+                    href="https://wa.me/27717768306"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex text-sm font-medium text-[#FF0080] underline underline-offset-4 hover:text-[#3A0060] transition-colors"
+                  >
+                    Order Now →
+                  </a>
                 </div>
               </motion.div>
             </motion.article>
@@ -532,7 +567,7 @@ export default function HomePage() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                  className="editorial-product-card rounded-3xl bg-[#fdf8ff] p-8 shadow-sm"
+                  className="editorial-product-card relative overflow-hidden rounded-3xl bg-[#fdf8ff] p-8 shadow-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-3xl before:bg-[radial-gradient(circle_at_50%_0%,rgba(255,0,128,0.07),transparent_70%)]"
                 >
                   <div className="relative h-[20rem] w-full">
                     <ProductCardImage src={product.image} alt={`${product.name} product image`} />
@@ -540,6 +575,14 @@ export default function HomePage() {
                   <div className="pt-5 text-center">
                     <h3 className="hero-display text-xl font-bold tracking-tight text-[#3A0060]">{product.name}</h3>
                     <p className="mt-2 text-base font-semibold text-[#FFD700]">{product.price}</p>
+                    <a
+                      href="https://wa.me/27717768306"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex text-sm font-medium text-[#FF0080] underline underline-offset-4 hover:text-[#3A0060] transition-colors"
+                    >
+                      Order Now →
+                    </a>
                   </div>
                 </motion.div>
               </motion.article>
@@ -569,10 +612,12 @@ export default function HomePage() {
                 Bundle your <span className="italic">glow routine</span>
               </h3>
               <ul className="mt-6 space-y-3 text-lg text-gray-700">
-                <li>Facial Moisturizer</li>
-                <li>Body Butter</li>
-                <li>Omega Tissue Oil</li>
+                <li className="flex items-center gap-3"><span className="font-bold text-[#FFD700]">✓</span> Facial Moisturizer</li>
+                <li className="flex items-center gap-3"><span className="font-bold text-[#FFD700]">✓</span> Body Butter</li>
+                <li className="flex items-center gap-3"><span className="font-bold text-[#FFD700]">✓</span> Omega Tissue Oil</li>
               </ul>
+              <p className="mt-6 text-3xl font-bold text-[#FFD700]">R710.00</p>
+              <p className="mt-1 text-sm font-semibold text-[#FF0080]">Save R59 when you bundle</p>
               <motion.a
                 href="https://wa.me/27717768306"
                 target="_blank"
@@ -587,7 +632,7 @@ export default function HomePage() {
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
-              className="relative h-[28rem] overflow-hidden shadow-[0_20px_50px_rgba(26,5,51,0.10)]"
+              className="relative h-[28rem] overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(26,5,51,0.10)]"
             >
               <Image
                 src="/photos/product_bundle.jpeg"
@@ -600,13 +645,18 @@ export default function HomePage() {
         </div>
       </motion.section>
 
+      <div className="overflow-hidden leading-none">
+        <svg viewBox="0 0 1440 60" className="w-full" preserveAspectRatio="none">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#3A0060" />
+        </svg>
+      </div>
       <motion.section
         id="results"
         variants={sectionReveal}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-[#3A0060] px-4 py-28 text-white sm:px-8 lg:px-12"
+        className="bg-[#3A0060] px-4 py-32 text-white sm:px-8 lg:px-12"
       >
         <div className="mx-auto w-full max-w-7xl">
           <p className="inline-flex rounded-full border border-[#FF0080]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#FF0080]">By The Numbers</p>
@@ -616,8 +666,13 @@ export default function HomePage() {
 
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {provenResults.map((result) => (
-              <motion.article key={result.label} variants={cardReveal} className="rounded-2xl bg-white/5 p-6 border-b-2 border-[#FFD700]">
-                <p className="hero-display text-5xl font-bold leading-none text-white">
+              <motion.article
+                key={result.label}
+                variants={cardReveal}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+                className="rounded-2xl bg-white/5 p-6 border-b-2 border-[#FFD700] transition-colors"
+              >
+                <p className="hero-display text-6xl font-bold leading-none text-white">
                   <CountUpNumber value={result.value} suffix={result.suffix} />
                 </p>
                 <div className="mt-3 h-1 w-12 rounded-full bg-[#FF0080]" />
@@ -628,6 +683,11 @@ export default function HomePage() {
           </motion.div>
         </div>
       </motion.section>
+      <div className="overflow-hidden leading-none rotate-180">
+        <svg viewBox="0 0 1440 60" className="w-full" preserveAspectRatio="none">
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#3A0060" />
+        </svg>
+      </div>
 
       <motion.section
         id="testimonials"
@@ -635,11 +695,12 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-28 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
       >
         <div className="pointer-events-none absolute right-16 top-20 h-52 w-52 rounded-full bg-gradient-to-br from-[#3A0060]/30 to-[#FF0080]/10 blur-3xl" />
         <div className="mx-auto w-full max-w-7xl">
-          <h2 className="hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">What Our Clients Say</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Client Stories</p>
+          <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">What Our Clients Say</h2>
           <div className="mt-12 rounded-3xl border border-[#FF0080]/20 bg-[#3A0060] p-8 text-white shadow-[0_22px_60px_rgba(58,0,96,0.4)] sm:p-10">
             <div className="relative overflow-hidden">
               <AnimatePresence mode="wait" custom={direction}>
@@ -660,7 +721,7 @@ export default function HomePage() {
                   </div>
                   <p className="mt-6 text-xl italic leading-9 text-white">“{activeItem.quote}”</p>
                   <div className="mt-8 flex items-center gap-4">
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-semibold text-white ${activeItem.tint}`}>
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-full text-sm font-semibold text-white ring-2 ring-[#FFD700]/60 ${activeItem.tint}`}>
                       {activeItem.name
                         .split(" ")
                         .filter(Boolean)
@@ -681,9 +742,10 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setIsAutoPlay((current) => !current)}
-                  className="inline-flex h-10 items-center rounded-full border border-white/20 px-4 text-xs font-semibold uppercase tracking-[0.12em] text-white transition hover:border-[#FF0080] hover:text-[#FF0080]"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#FF0080] hover:text-[#FF0080]"
+                  aria-label={isAutoPlay ? "Pause autoplay" : "Play autoplay"}
                 >
-                  {isAutoPlay ? "Pause" : "Play"}
+                  {isAutoPlay ? "⏸" : "▶"}
                 </button>
                 <button
                   type="button"
@@ -729,11 +791,13 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-white px-4 py-28 sm:px-8 lg:px-12"
+        className="bg-white px-4 py-32 sm:px-8 lg:px-12"
       >
         <div className="mx-auto w-full max-w-7xl">
-          <h2 className="hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">Real Results, Real Glow</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Real Transformations</p>
+          <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">Real Results, Real Glow</h2>
           <p className="mt-4 max-w-2xl text-lg text-[#3A0060]">Drag the slider to compare before and after results from our routine.</p>
+          <p className="mt-2 flex items-center gap-2 text-sm font-medium text-[#FF0080]"><span aria-hidden="true">☜</span> Drag the slider to reveal results <span aria-hidden="true">☞</span></p>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-6 md:grid-cols-3">
             {beforeAfterItems.map((item, index) => (
               <BeforeAfterSlider key={item.caption} index={index} caption={item.caption} beforeSrc={item.beforeSrc} afterSrc={item.afterSrc} />
@@ -748,11 +812,12 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-28 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
       >
         <div className="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(circle_at_15%_20%,rgba(197,163,85,0.2),transparent_40%),radial-gradient(circle_at_90%_75%,rgba(212,56,142,0.15),transparent_42%)]" />
         <div className="mx-auto w-full max-w-7xl">
-          <h2 className="hero-display text-[clamp(2.1rem,4.5vw,4rem)] font-bold tracking-tight text-[#1a0533]">Ingredients</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">What's Inside</p>
+          <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.5vw,4rem)] font-bold tracking-tight text-[#1a0533]">Ingredients</h2>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-12 space-y-6">
             {ingredients.map((ingredient, index) => {
               const reversed = index % 2 === 1;
@@ -760,10 +825,11 @@ export default function HomePage() {
                 <motion.article
                   key={ingredient.title}
                   variants={cardReveal}
-                  className="grid gap-6 rounded-3xl bg-white/60 p-7 lg:grid-cols-[0.22fr_0.78fr]"
+                  whileHover={{ y: -4, boxShadow: "0 12px 40px rgba(58,0,96,0.10)" }}
+                  className={`grid gap-6 rounded-3xl p-7 lg:grid-cols-[0.22fr_0.78fr] ${index % 2 === 0 ? "bg-white" : "bg-[#f9f4ff]"}`}
                 >
                   <div className={`flex flex-col items-start gap-4 ${reversed ? "lg:order-2" : ""}`}>
-                    <p className="hero-display text-5xl leading-none text-[#FFD700]">{String(index + 1).padStart(2, "0")}</p>
+                    <p className="hero-display text-7xl leading-none text-[#FFD700]">{String(index + 1).padStart(2, "0")}</p>
                     <div className="rounded-full bg-white p-3 shadow-sm">{index % 2 === 0 ? <LeafIcon /> : <DropIcon />}</div>
                   </div>
                   <div className={reversed ? "lg:order-1" : ""}>
@@ -783,10 +849,11 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-white px-4 py-28 sm:px-8 lg:px-12"
+        className="bg-white px-4 py-32 sm:px-8 lg:px-12"
       >
         <div className="mx-auto w-full max-w-7xl">
-          <h2 className="hero-display text-[clamp(2.1rem,4.4vw,4rem)] font-bold tracking-tight text-[#1a0533]">How to Order</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Simple Process</p>
+          <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.4vw,4rem)] font-bold tracking-tight text-[#1a0533]">How to Order</h2>
           <div className="mt-10 space-y-6">
             {[
               {
@@ -812,11 +879,11 @@ export default function HomePage() {
               {
                 title: "Make Payment",
                 description: (
-                  <div className="space-y-1">
-                    <p>Capitec: 1396299104, Collien Ntsako Mabunda</p>
-                    <p>FNB: 62860102773, ForeverGlow Business, Cheque</p>
-                    <p>Absa: 4105805301, Collien Ntsako Mabunda, Cheque</p>
-                    <p>Use your name as reference</p>
+                  <div className="mt-3 rounded-xl border-l-4 border-[#FFD700] bg-[#f9f4ff] p-4 font-mono text-sm">
+                    <p><span className="font-sans font-semibold text-[#3A0060]">Capitec:</span> 1396299104 — Collien Ntsako Mabunda</p>
+                    <p className="mt-1"><span className="font-sans font-semibold text-[#3A0060]">FNB:</span> 62860102773 — ForeverGlow Business, Cheque</p>
+                    <p className="mt-1"><span className="font-sans font-semibold text-[#3A0060]">Absa:</span> 4105805301 — Collien Ntsako Mabunda, Cheque</p>
+                    <p className="mt-3 font-sans text-xs font-semibold uppercase tracking-widest text-[#FF0080]">Use your name as payment reference</p>
                   </div>
                 ),
               },
@@ -841,6 +908,18 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+          <div className="mt-12 text-center">
+            <motion.a
+              href="https://wa.me/27717768306"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 28px rgba(255,0,128,0.45)" }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#3A0060] to-[#FF0080] px-12 py-4 text-base font-semibold text-white shadow-lg"
+            >
+              Ready? Order on WhatsApp →
+            </motion.a>
+          </div>
         </div>
       </motion.section>
 
@@ -850,16 +929,16 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-white px-4 py-28 sm:px-8 lg:px-12"
+        className="bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
       >
         <div className="mx-auto w-full max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#FF0080]">Got Questions?</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Got Questions?</p>
           <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.4vw,4rem)] font-bold tracking-tight text-[#3A0060]">
             Frequently Asked <span className="italic">Questions</span>
           </h2>
           <div className="mt-12 divide-y divide-[#3A0060]/10">
             {faqs.map((faq, index) => (
-              <div key={faq.question} className="py-6">
+              <div key={faq.question} className="py-6 hover:bg-white/70 rounded-2xl px-4 transition-colors">
                 <button
                   type="button"
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
@@ -882,7 +961,17 @@ export default function HomePage() {
                       transition={{ duration: 0.35, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
+                      {index === faqs.length - 1 ? (
+                      <p className="mt-4 text-base leading-8 text-gray-600">
+                        Please refer to our{" "}
+                        <Link href="/refunds" className="text-[#FF0080] underline underline-offset-4 hover:text-[#3A0060] transition-colors">
+                          refunds policy page
+                        </Link>{" "}
+                        for full details.
+                      </p>
+                    ) : (
                       <p className="mt-4 text-base leading-8 text-gray-600">{faq.answer}</p>
+                    )}
                     </motion.div>
                   )}
                 </AnimatePresence>
