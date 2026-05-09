@@ -4,15 +4,33 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, animate, motion, useInView, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
-const aboutCopy = [
-  "Forever Glow is an anti marks cream created to give you that vibrant deeply hydration on your skin. It removes acne, scars, dark marks, pigmentation and discoloration.",
-  "Enriched with tea tree, Aloe Vera, vitamin E and Shea Butter.",
-];
+const aboutCopy = {
+  heading: "The Visionary Behind Forever Group",
+  intro: [
+    'For Ntsako Mabunda, the journey to founding the Forever Group of Companies began with a lifelong obsession with radiant, healthy skin. Her passion for "the glow" started years ago during school assemblies, where she realized that skin is not just an organ—it is a reflection of confidence and care.',
+    "As seasons passed, Ntsako recognized that our skin evolves with us. After personally struggling with dullness and realizing the market lacked accessible, high-SPF hydration, she set out to find a real solution.",
+  ],
+  sections: [
+    {
+      title: "The Birth of ForeverGlow",
+      paragraphs: [
+        "In 2020, amidst the challenges of the global lockdown, Ntsako emerged with a breakthrough. What began as a personal quest for purity and hydration became the formula for ForeverGlow. The results were undeniable: impurities vanished, and a radiant transformation took place.",
+        'When the world noticed her results, Ntsako decided to share her secret. Today, ForeverGlow is more than just skincare; it is a restorer of confidence. From our renowned Face Moisturizer and Omega Tissue Oil to our moisture-locking Body Butter, we provide the tools to ensure you never "look like what you are going through."',
+      ],
+    },
+    {
+      title: "Forever Group: Beyond the Glow",
+      paragraphs: [
+        "What started with a single face cream has evolved into the Forever Group of Companies. Guided by Ntsako's leadership, the group is committed to excellence, restoration, and the belief that quality care should be a permanent part of your lifestyle.",
+      ],
+    },
+  ],
+};
 
 const products = [
-  { name: "Facial Moisturizer", price: "R260.00", size: "h-[28rem]" },
-  { name: "Body Butter", price: "R390.00", size: "h-[20rem]" },
-  { name: "Omega Tissue Oil", price: "R119.00", size: "h-[23rem]" },
+  { name: "Facial Moisturizer", price: "R260.00", size: "h-[28rem]", image: "/photos/Facial Moisturizer.jpeg" },
+  { name: "Body Butter", price: "R390.00", size: "h-[20rem]", image: "/photos/Body Butter.jpeg" },
+  { name: "Omega Tissue Oil", price: "R119.00", size: "h-[23rem]", image: "/photos/Omega Tissue Oil.jpeg" },
 ];
 
 const ingredients = [
@@ -304,6 +322,21 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
   );
 }
 
+function ProductCardImage({ src, alt, priority = false }) {
+  const [imageSrc, setImageSrc] = useState(src);
+
+  return (
+    <Image
+      src={imageSrc}
+      alt={alt}
+      fill
+      priority={priority}
+      onError={() => setImageSrc("/photos/product_bundle.jpeg")}
+      className="object-cover transition-transform duration-500 hover:scale-105"
+    />
+  );
+}
+
 export default function HomePage() {
   const { scrollY } = useScroll();
   const heroParallax = useTransform(scrollY, [0, 600], [0, 70]);
@@ -411,11 +444,14 @@ export default function HomePage() {
         <motion.div style={{ y: aboutParallax }} className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#FF0080]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <h2 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#1a0533]">
-              Vibrant skin <span className="italic">starts here</span>
-            </h2>
-            <p className="mt-8 max-w-2xl text-lg text-gray-600">{aboutCopy[0]}</p>
-            <p className="mt-5 text-lg text-gray-600">{aboutCopy[1]}</p>
+            <h2 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#1a0533]">{aboutCopy.heading}</h2>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">{aboutCopy.intro[0]}</p>
+            <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
+            <h3 className="mt-8 hero-display text-2xl font-semibold text-[#FFD700]">{aboutCopy.sections[0].title}</h3>
+            <p className="mt-4 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
+            <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
+            <h3 className="mt-8 hero-display text-2xl font-semibold text-[#3A0060]">{aboutCopy.sections[1].title}</h3>
+            <p className="mt-4 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
             <motion.a
               href="https://wa.me/27717768306"
               target="_blank"
@@ -435,7 +471,7 @@ export default function HomePage() {
             <div className="relative h-[30rem] w-full overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(26,5,51,0.12)]">
               <Image
                 src="/photos/hero1.jpg"
-                alt="Vibrant skin with Forever Glow skincare"
+                alt="Founder Ntsako Mabunda"
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -476,6 +512,7 @@ export default function HomePage() {
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
                 className="editorial-product-card relative h-[32rem] overflow-hidden rounded-3xl sm:h-full"
               >
+                <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1a0533]/80 via-[#1a0533]/30 to-transparent p-6">
                   <p className="text-xs uppercase tracking-[0.18em] text-[#FFD700]">Bestseller</p>
                   <h3 className="mt-2 hero-display text-2xl font-bold tracking-tight text-white">{products[0].name}</h3>
@@ -490,6 +527,7 @@ export default function HomePage() {
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
                   className="editorial-product-card relative h-[18rem] overflow-hidden rounded-3xl sm:h-full"
                 >
+                  <ProductCardImage src={product.image} alt={`${product.name} product image`} />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1a0533]/80 via-[#1a0533]/30 to-transparent p-6">
                     <p className="text-xs uppercase tracking-[0.18em] text-[#FFD700]">Product</p>
                     <h3 className="mt-2 hero-display text-xl font-bold tracking-tight text-white">{product.name}</h3>
