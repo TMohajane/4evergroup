@@ -516,9 +516,9 @@ export default function HomePage() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                className="editorial-product-card rounded-3xl bg-[radial-gradient(circle_at_50%_30%,#f3eaff,#fdf6ff)] p-8 shadow-[0_8px_32px_rgba(58,0,96,0.08)]"
+                className="editorial-product-card rounded-3xl bg-[#fdf8ff] p-8 shadow-sm"
               >
-                <div className="relative h-[24rem] w-full">
+                <div className="relative h-[26rem] w-full">
                   <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority />
                 </div>
                 <div className="pt-5 text-center">
@@ -532,9 +532,9 @@ export default function HomePage() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                  className="editorial-product-card rounded-3xl bg-[radial-gradient(circle_at_50%_30%,#f3eaff,#fdf6ff)] p-8 shadow-[0_8px_32px_rgba(58,0,96,0.08)]"
+                  className="editorial-product-card rounded-3xl bg-[#fdf8ff] p-8 shadow-sm"
                 >
-                  <div className="relative h-[16rem] w-full">
+                  <div className="relative h-[20rem] w-full">
                     <ProductCardImage src={product.image} alt={`${product.name} product image`} />
                   </div>
                   <div className="pt-5 text-center">
@@ -587,7 +587,7 @@ export default function HomePage() {
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
-              className="relative h-[28rem] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(26,5,51,0.15)] transition-shadow duration-300 hover:shadow-[0_30px_70px_rgba(212,56,142,0.22)]"
+              className="relative h-[28rem] overflow-hidden shadow-[0_20px_50px_rgba(26,5,51,0.10)]"
             >
               <Image
                 src="/photos/product_bundle.jpeg"
