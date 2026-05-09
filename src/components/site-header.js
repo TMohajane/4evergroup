@@ -50,7 +50,7 @@ export default function SiteHeader() {
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center">
-          <Image src="/photos/logo.png" alt="Forever Group of Companies" width={300} height={70} className="h-[70px] w-auto" />
+          <Image src="/photos/logo.png" alt="Forever Group of Companies" width={300} height={70} priority className="h-[70px] w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium md:flex text-white drop-shadow">

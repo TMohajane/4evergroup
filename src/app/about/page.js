@@ -51,7 +51,7 @@ export default function AboutPage() {
         </div>
         <div className="order-1 mx-auto w-full max-w-sm lg:order-2">
           <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0">
-            <Image src="/photos/hero1.jpg" alt="Founder Ntsako Mabunda" fill className="object-cover" />
+            <Image src="/photos/hero1.jpg" alt="Founder Ntsako Mabunda" fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" />
           </div>
         </div>
       </div>
