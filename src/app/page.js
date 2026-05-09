@@ -28,9 +28,9 @@ const aboutCopy = {
 };
 
 const products = [
-  { name: "Facial Moisturizer", price: "R260.00", size: "h-[28rem]", image: "/photos/Facial Moisturizer.jpeg" },
-  { name: "Body Butter", price: "R390.00", size: "h-[20rem]", image: "/photos/Body Butter.jpeg" },
-  { name: "Omega Tissue Oil", price: "R119.00", size: "h-[23rem]", image: "/photos/Omega Tissue Oil.jpeg" },
+  { name: "Facial Moisturizer", price: "R260.00", size: "h-[28rem]", image: "/photos/Facial%20Moisturizer.jpeg" },
+  { name: "Body Butter", price: "R390.00", size: "h-[20rem]", image: "/photos/Body%20Butter.jpeg" },
+  { name: "Omega Tissue Oil", price: "R119.00", size: "h-[23rem]", image: "/photos/Omega%20Tissue%20Oil.jpeg" },
 ];
 
 const ingredients = [
