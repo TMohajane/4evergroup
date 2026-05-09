@@ -509,6 +509,7 @@ export default function HomePage() {
                 src="/photos/hero1.jpg"
                 alt="Founder Ntsako Mabunda"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
