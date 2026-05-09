@@ -193,7 +193,7 @@ export default function RootLayout({ children }) {
                 <p>
                   Built with ❤️ by{" "}
                   <a
-                    href="https://github.com/TMohajane/c401-studios"
+                    href="https://c401studios.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline decoration-[#FF0080] underline-offset-4 transition hover:text-white"
