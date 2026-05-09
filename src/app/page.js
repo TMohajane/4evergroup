@@ -797,7 +797,7 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Real Transformations</p>
           <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">Real Results, Real Glow</h2>
           <p className="mt-4 max-w-2xl text-lg text-[#3A0060]">Drag the slider to compare before and after results from our routine.</p>
-          <p className="mt-2 flex items-center gap-2 text-sm font-medium text-[#FF0080]"><span>☜</span> Drag the slider to reveal results <span>☞</span></p>
+          <p className="mt-2 flex items-center gap-2 text-sm font-medium text-[#FF0080]"><span aria-hidden="true">☜</span> Drag the slider to reveal results <span aria-hidden="true">☞</span></p>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-10 grid gap-6 md:grid-cols-3">
             {beforeAfterItems.map((item, index) => (
               <BeforeAfterSlider key={item.caption} index={index} caption={item.caption} beforeSrc={item.beforeSrc} afterSrc={item.afterSrc} />
