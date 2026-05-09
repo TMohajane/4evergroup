@@ -67,12 +67,12 @@ function MapPinIcon({ className = "h-5 w-5" }) {
 }
 
 export const metadata = {
-  title: "Forever Glow",
-  description: "Forever Glow skincare product showcase website",
+  title: "Forever Glow | Skincare by Forever Group",
+  description: "South Africa's favourite natural skincare — crafted for radiant, confident skin.",
   icons: {
     icon: [{ url: "/photos/icon.png", type: "image/png" }],
+    shortcut: [{ url: "/photos/icon.png", type: "image/png" }],
     apple: [{ url: "/photos/icon.png", type: "image/png" }],
-    shortcut: "/photos/icon.png",
   },
 };
 
@@ -80,8 +80,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <head>
-        <link rel="icon" href="/photos/icon.png" type="image/png" />
-        <link rel="shortcut icon" href="/photos/icon.png" type="image/png" />
+        <link rel="icon" href="/photos/icon.png" type="image/png" sizes="any" />
         <link rel="apple-touch-icon" href="/photos/icon.png" />
       </head>
       <body className="min-h-full bg-[#f9f4ff] text-[#1a0533]">
