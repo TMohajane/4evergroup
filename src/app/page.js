@@ -335,7 +335,7 @@ function ProductCardImage({ src, alt, priority = false, sizes }) {
       quality={100}
       sizes={sizes}
       onError={() => setImageSrc("/photos/product_bundle.jpeg")}
-      className="object-contain p-4"
+      className="object-contain p-4 mix-blend-multiply"
     />
   );
 }
@@ -516,7 +516,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden bg-white px-4 py-32 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
       >
         <motion.div style={{ y: productParallax }} className="pointer-events-none absolute left-0 top-10 h-64 w-64 rounded-full bg-[#3A0060]/10 blur-3xl" />
         <div className="mx-auto w-full max-w-7xl">
@@ -541,14 +541,14 @@ export default function HomePage() {
           >
             <motion.article variants={cardReveal} className="sm:row-span-2">
               <motion.div
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, boxShadow: "0 20px 60px rgba(58,0,96,0.15)" }}
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                className="editorial-product-card relative overflow-hidden rounded-3xl bg-transparent p-8"
+                className="editorial-product-card relative overflow-hidden rounded-3xl bg-white shadow-[0_8px_40px_rgba(58,0,96,0.08)]"
               >
-                <div className="relative h-[36rem] w-full bg-white">
+                <div className="relative h-[32rem] w-full rounded-t-3xl bg-[#f0e8ff]">
                   <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority sizes="(max-width: 768px) 100vw, 55vw" />
                 </div>
-                <div className="pt-5 text-center">
+                <div className="p-6 text-center">
                   <div className="mx-auto h-px w-12 bg-[#FFD700]" />
                   <h3 className="hero-display mt-4 text-2xl font-bold tracking-tight text-[#3A0060]">{products[0].name}</h3>
                   <p className="mt-2 text-base font-semibold text-[#FFD700]">{products[0].price}</p>
@@ -566,14 +566,14 @@ export default function HomePage() {
             {products.slice(1).map((product) => (
               <motion.article key={product.name} variants={cardReveal}>
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, boxShadow: "0 20px 60px rgba(58,0,96,0.15)" }}
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                  className="editorial-product-card relative overflow-hidden rounded-3xl bg-transparent p-8"
+                  className="editorial-product-card relative overflow-hidden rounded-3xl bg-white shadow-[0_8px_40px_rgba(58,0,96,0.08)]"
                 >
-                  <div className="relative h-[26rem] w-full bg-white">
+                  <div className="relative h-[22rem] w-full rounded-t-3xl bg-[#f0e8ff]">
                     <ProductCardImage src={product.image} alt={`${product.name} product image`} sizes="(max-width: 768px) 100vw, 40vw" />
                   </div>
-                  <div className="pt-5 text-center">
+                  <div className="p-6 text-center">
                     <div className="mx-auto h-px w-12 bg-[#FFD700]" />
                     <h3 className="hero-display mt-4 text-xl font-bold tracking-tight text-[#3A0060]">{product.name}</h3>
                     <p className="mt-2 text-base font-semibold text-[#FFD700]">{product.price}</p>
@@ -599,21 +599,24 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#1a0533] px-4 py-32 sm:px-8 lg:px-12"
       >
-        <p className="pointer-events-none absolute left-1/2 top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 hero-display text-[clamp(8rem,20vw,16rem)] font-bold leading-none tracking-tight text-[#1a0533]/20">
+        <div className="pointer-events-none absolute left-1/4 top-0 h-96 w-96 rounded-full bg-[#FF0080]/20 blur-[120px]" />
+        <div className="pointer-events-none absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-[#3A0060]/60 blur-[100px]" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FFD700]/10 blur-[80px]" />
+        <p className="pointer-events-none absolute left-1/2 top-1/2 z-[1] -translate-x-1/2 -translate-y-1/2 hero-display text-[clamp(8rem,20vw,16rem)] font-bold leading-none tracking-tight text-white/5">
           glow
         </p>
         <div className="relative z-[2] mx-auto w-full max-w-7xl">
-          <h2 className="hero-display text-[clamp(2.2rem,4.8vw,4.5rem)] font-bold tracking-tight text-[#1a0533]">Complete Collection</h2>
-          <p className="mt-4 text-lg text-gray-600">Complete Collection - All 3 for R710.00 (excluding delivery)</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Best Value</p>
+          <h2 className="hero-display mt-4 text-[clamp(2.2rem,4.8vw,4.5rem)] font-bold tracking-tight text-white">Complete Collection</h2>
 
           <motion.div variants={cardReveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="py-4">
-              <h3 className="hero-display text-[clamp(1.8rem,3.6vw,3rem)] font-bold tracking-tight text-[#1a0533]">
+              <h3 className="hero-display text-[clamp(1.8rem,3.6vw,3rem)] font-bold tracking-tight text-white">
                 Bundle your <span className="italic">glow routine</span>
               </h3>
-              <ul className="mt-6 space-y-3 text-lg text-gray-700">
+              <ul className="mt-6 space-y-3 text-lg text-white/80">
                 <li className="flex items-center gap-3"><span className="font-bold text-[#FFD700]">✓</span> Facial Moisturizer</li>
                 <li className="flex items-center gap-3"><span className="font-bold text-[#FFD700]">✓</span> Body Butter</li>
                 <li className="flex items-center gap-3"><span className="font-bold text-[#FFD700]">✓</span> Omega Tissue Oil</li>
@@ -626,21 +629,22 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-8 inline-flex rounded-full border border-[#3A0060] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#FF0080] hover:bg-[#FF0080] hover:text-white"
+                className="mt-8 inline-flex rounded-full border-none bg-gradient-to-r from-[#FF0080] to-[#3A0060] px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:opacity-90"
               >
                 Get the bundle
               </motion.a>
             </div>
             <motion.div
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
-              className="relative h-[28rem] overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_rgba(26,5,51,0.10)]"
+              className="relative h-[32rem] overflow-hidden rounded-3xl bg-[#f5eeff] shadow-[0_30px_80px_rgba(0,0,0,0.35)]"
             >
               <Image
                 src="/photos/product_bundle.jpeg"
                 alt="Forever Glow Complete Collection bundle — Facial Moisturizer, Body Butter, and Omega Tissue Oil"
                 fill
-                className="object-contain scale-90 transition-transform duration-500 hover:scale-95"
+                quality={100}
+                className="object-contain mix-blend-multiply transition-transform duration-500 hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
