@@ -13,6 +13,12 @@ const links = [
   { href: "/#faq", label: "FAQ" },
 ];
 
+const socialLinks = [
+  { href: "https://www.instagram.com/forever_glow_sa", label: "Instagram", short: "IG" },
+  { href: "https://www.facebook.com/ForeverGlow", label: "Facebook", short: "FB" },
+  { href: "https://www.tiktok.com/@forever_glow_sa", label: "TikTok", short: "TT" },
+];
+
 function WhatsAppIcon() {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className="h-4 w-4 fill-current">
@@ -68,6 +74,20 @@ export default function SiteHeader() {
           >
             <WhatsAppIcon />
           </a>
+          <div className="hidden items-center gap-2 lg:flex">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/35 text-[10px] font-semibold text-white transition hover:border-[#FFD700] hover:text-[#FFD700]"
+              >
+                {social.short}
+              </a>
+            ))}
+          </div>
         </nav>
 
         <button
@@ -109,6 +129,19 @@ export default function SiteHeader() {
                 <WhatsAppIcon />
                 WhatsApp
               </a>
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex rounded-full border border-white/30 px-3 py-1 text-xs font-medium text-white transition hover:border-[#FFD700] hover:text-[#FFD700]"
+                  >
+                    {social.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.nav>
         )}

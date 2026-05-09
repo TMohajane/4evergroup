@@ -73,22 +73,54 @@ const provenResults = [
 
 const testimonials = [
   {
-    quote:
-      "Forever Glow completely transformed my skin. The dark marks I had for years started fading within weeks. I cannot recommend it enough.",
-    name: "Thandi",
+    quote: "Forever Glow completely transformed my skin. The dark marks I had for years started fading within weeks. I cannot recommend it enough.",
+    name: "Thandi M.",
     tint: "bg-[#FF0080]",
   },
   {
-    quote:
-      "The body butter is absolutely amazing. My skin has never felt this soft and hydrated. The scent is heavenly too.",
-    name: "Lerato",
+    quote: "The body butter is absolutely amazing. My skin has never felt this soft and hydrated. The scent is heavenly too.",
+    name: "Lerato K.",
     tint: "bg-[#3A0060]",
   },
   {
-    quote:
-      "I was skeptical at first but the results speak for themselves. My acne scars have visibly reduced and my skin glows.",
-    name: "Naledi",
+    quote: "I was skeptical at first but the results speak for themselves. My acne scars have visibly reduced and my skin glows.",
+    name: "Naledi D.",
     tint: "bg-[#FFD700]",
+  },
+  {
+    quote: "The Omega Tissue Oil is a game changer. I use it every night and my skin tone has evened out beautifully. I get compliments every day.",
+    name: "Nompumelelo S.",
+    tint: "bg-[#FF0080]",
+  },
+  {
+    quote: "I've tried so many skincare brands and nothing worked until ForeverGlow. Within a month my skin was literally glowing. Best purchase I've made.",
+    name: "Zanele P.",
+    tint: "bg-[#3A0060]",
+  },
+  {
+    quote: "Fast delivery, beautiful packaging, and most importantly — the products actually work! My hyperpigmentation is almost completely gone.",
+    name: "Ayanda N.",
+    tint: "bg-[#FF0080]",
+  },
+  {
+    quote: "The facial moisturizer is so light but deeply hydrating. It doesn't leave any greasy feeling. My skin drinks it up every morning.",
+    name: "Boitumelo R.",
+    tint: "bg-[#3A0060]",
+  },
+  {
+    quote: "Ntsako is so helpful and responsive on WhatsApp. She guided me on which products to use for my skin type and the results have been incredible.",
+    name: "Siwe T.",
+    tint: "bg-[#FFD700]",
+  },
+  {
+    quote: "I ordered the bundle and it was worth every rand. My whole routine is sorted with just three products. My skin has never looked better.",
+    name: "Precious M.",
+    tint: "bg-[#FF0080]",
+  },
+  {
+    quote: "I was dealing with really bad acne breakouts. After two weeks of using the facial moisturizer and tissue oil, my skin is so calm and clear.",
+    name: "Kgomotso L.",
+    tint: "bg-[#3A0060]",
   },
 ];
 
@@ -263,11 +295,11 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
   return (
     <motion.article
       variants={cardReveal}
-      className="rounded-3xl bg-[#f9f4ff] p-5 shadow-[0_6px_24px_rgba(26,5,51,0.07)]"
+      className="rounded-3xl bg-[#f9f4ff] p-4 shadow-[0_6px_24px_rgba(26,5,51,0.07)]"
     >
       <div
         ref={containerRef}
-        className="relative h-64 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#8E24BE,#3A0060)]"
+        className="relative h-80 overflow-hidden rounded-2xl bg-[linear-gradient(120deg,#8E24BE,#3A0060)]"
         onClick={(event) => updatePosition(event.clientX)}
       >
         {/* After image — full-size base layer */}
@@ -275,7 +307,7 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
           src={afterSrc}
           alt={`After — ${caption}`}
           fill
-          className="object-cover"
+          className="object-cover object-top"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
 
@@ -288,7 +320,7 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
             src={beforeSrc}
             alt={`Before — ${caption}`}
             fill
-            className="object-cover"
+            className="object-cover object-top"
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </div>
@@ -335,7 +367,7 @@ function ProductCardImage({ src, alt, priority = false, sizes }) {
       quality={100}
       sizes={sizes}
       onError={() => setImageSrc("/photos/product_bundle.jpeg")}
-      className="object-contain p-4 mix-blend-multiply"
+      className="object-contain p-4"
     />
   );
 }
@@ -364,7 +396,7 @@ export default function HomePage() {
     const timer = setInterval(() => {
       setDirection(1);
       setActiveTestimonial((current) => (current + 1) % testimonials.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
   }, [isAutoPlay]);
 
@@ -423,7 +455,7 @@ export default function HomePage() {
               Glow-forward care made for{" "}
               <span className="bg-gradient-to-r from-white via-[#f4c0da] to-[#FF0080] bg-clip-text text-transparent">visible confidence</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-white/85 drop-shadow">South Africa's favourite natural skincare — crafted for radiant, confident skin.</p>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-white/85 drop-shadow">South Africa&apos;s favourite natural skincare — crafted for radiant, confident skin.</p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <motion.a
                 href="#products"
@@ -472,7 +504,7 @@ export default function HomePage() {
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
             className="order-1 mx-auto w-full max-w-sm lg:order-2"
           >
-            <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0 ring-4 ring-[#FFD700]/30 ring-offset-4">
+            <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0 ring-4 ring-[#FFD700]/40 ring-offset-4 ring-offset-[#f9f4ff]">
               <Image
                 src="/photos/hero1.jpg"
                 alt="Founder Ntsako Mabunda"
@@ -516,7 +548,7 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-white px-4 py-32 sm:px-8 lg:px-12"
       >
         <motion.div style={{ y: productParallax }} className="pointer-events-none absolute left-0 top-10 h-64 w-64 rounded-full bg-[#3A0060]/10 blur-3xl" />
         <div className="mx-auto w-full max-w-7xl">
@@ -545,7 +577,7 @@ export default function HomePage() {
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
                 className="editorial-product-card relative overflow-hidden rounded-3xl bg-white shadow-[0_8px_40px_rgba(58,0,96,0.08)]"
               >
-                <div className="relative h-[32rem] w-full rounded-t-3xl bg-[#f0e8ff]">
+                <div className="relative h-[32rem] w-full rounded-t-3xl bg-white">
                   <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority sizes="(max-width: 768px) 100vw, 55vw" />
                 </div>
                 <div className="p-6 text-center">
@@ -570,7 +602,7 @@ export default function HomePage() {
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
                   className="editorial-product-card relative overflow-hidden rounded-3xl bg-white shadow-[0_8px_40px_rgba(58,0,96,0.08)]"
                 >
-                  <div className="relative h-[22rem] w-full rounded-t-3xl bg-[#f0e8ff]">
+                  <div className="relative h-[22rem] w-full rounded-t-3xl bg-white">
                     <ProductCardImage src={product.image} alt={`${product.name} product image`} sizes="(max-width: 768px) 100vw, 40vw" />
                   </div>
                   <div className="p-6 text-center">
@@ -644,7 +676,7 @@ export default function HomePage() {
                 alt="Forever Glow Complete Collection bundle — Facial Moisturizer, Body Butter, and Omega Tissue Oil"
                 fill
                 quality={100}
-                className="object-contain mix-blend-multiply transition-transform duration-500 hover:scale-105"
+                className="object-cover transition-transform duration-500 hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
@@ -690,7 +722,7 @@ export default function HomePage() {
           </motion.div>
         </div>
       </motion.section>
-      <div className="overflow-hidden leading-none rotate-180">
+      <div className="overflow-hidden leading-none" style={{ transform: "scaleY(-1)" }}>
         <svg viewBox="0 0 1440 60" className="w-full" preserveAspectRatio="none">
           <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#3A0060" />
         </svg>
@@ -823,7 +855,7 @@ export default function HomePage() {
       >
         <div className="pointer-events-none absolute inset-0 opacity-30 [background:radial-gradient(circle_at_15%_20%,rgba(197,163,85,0.2),transparent_40%),radial-gradient(circle_at_90%_75%,rgba(212,56,142,0.15),transparent_42%)]" />
         <div className="mx-auto w-full max-w-7xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">What's Inside</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">What&apos;s Inside</p>
           <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.5vw,4rem)] font-bold tracking-tight text-[#1a0533]">Ingredients</h2>
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-12 space-y-6">
             {ingredients.map((ingredient, index) => {

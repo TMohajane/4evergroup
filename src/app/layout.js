@@ -100,10 +100,22 @@ export default function RootLayout({ children }) {
                     <a href="https://wa.me/27717768306" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] transition duration-300 hover:-translate-y-0.5 hover:scale-105">
                       <WhatsAppIcon className="h-5 w-5 text-white" />
                     </a>
-                    <a href="#" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white transition duration-300 hover:-translate-y-0.5 hover:scale-105">
+                    <a
+                      href="https://www.instagram.com/forever_glow_sa"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white transition duration-300 hover:-translate-y-0.5 hover:scale-105"
+                    >
                       <InstagramIcon />
                     </a>
-                    <a href="#" aria-label="Facebook" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white transition duration-300 hover:-translate-y-0.5 hover:scale-105">
+                    <a
+                      href="https://www.facebook.com/ForeverGlow"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white transition duration-300 hover:-translate-y-0.5 hover:scale-105"
+                    >
                       <FacebookIcon />
                     </a>
                   </div>
@@ -160,17 +172,17 @@ export default function RootLayout({ children }) {
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">Follow Us</p>
                   <div className="mt-4 space-y-3 text-sm text-[#FFD700]">
-                    <a href="#" className="flex items-center gap-2 transition hover:text-white" aria-label="Instagram">
+                    <a href="https://www.instagram.com/forever_glow_sa" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 transition hover:text-white" aria-label="Instagram">
                       <InstagramIcon className="h-5 w-5" />
-                      <span>Instagram</span>
+                      <span>@forever_glow_sa</span>
                     </a>
-                    <a href="#" className="flex items-center gap-2 transition hover:text-white" aria-label="Facebook">
+                    <a href="https://www.facebook.com/ForeverGlow" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 transition hover:text-white" aria-label="Facebook">
                       <FacebookIcon className="h-5 w-5" />
-                      <span>Facebook</span>
+                      <span>ForeverGlow</span>
                     </a>
-                    <a href="#" className="flex items-center gap-2 transition hover:text-white" aria-label="TikTok">
+                    <a href="https://www.tiktok.com/@forever_glow_sa" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 transition hover:text-white" aria-label="TikTok">
                       <TikTokIcon className="h-5 w-5 text-white" />
-                      <span>TikTok</span>
+                      <span>@forever_glow_sa</span>
                     </a>
                   </div>
                 </div>
