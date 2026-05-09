@@ -333,7 +333,6 @@ function ProductCardImage({ src, alt, priority = false, sizes }) {
       fill
       priority={priority}
       quality={100}
-      unoptimized
       sizes={sizes}
       onError={() => setImageSrc("/photos/product_bundle.jpeg")}
       className="object-contain p-4"
