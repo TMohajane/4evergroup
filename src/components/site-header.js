@@ -45,17 +45,17 @@ export default function SiteHeader() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#3A0060] shadow-lg" : "bg-transparent"
+        scrolled ? "bg-[#3A0060]/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-8 lg:px-12">
         <Link href="/" className="flex items-center">
-          <Image src="/photos/logo.png" alt="Forever Group of Companies" width={300} height={110} className="h-[110px] w-auto" />
+          <Image src="/photos/logo.png" alt="Forever Group of Companies" width={300} height={70} className="h-[70px] w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium md:flex text-white drop-shadow">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="transition hover:text-[#FFD700]">
+            <Link key={link.href} href={link.href} className="relative transition hover:text-[#FFD700] after:absolute after:bottom-[-3px] after:left-0 after:h-0.5 after:w-0 after:bg-[#FFD700] after:transition-all after:duration-300 hover:after:w-full">
               {link.label}
             </Link>
           ))}
@@ -77,7 +77,11 @@ export default function SiteHeader() {
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <span className="text-xl">☰</span>
+          <div className="relative h-5 w-5">
+            <span className={`absolute left-0 top-0.5 h-0.5 w-5 bg-white transition-all duration-300 ${menuOpen ? "top-2 rotate-45" : ""}`} />
+            <span className={`absolute left-0 top-2 h-0.5 w-5 bg-white transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`absolute left-0 top-3.5 h-0.5 w-5 bg-white transition-all duration-300 ${menuOpen ? "top-2 -rotate-45" : ""}`} />
+          </div>
         </button>
       </div>
 
@@ -88,7 +92,7 @@ export default function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="border-t border-white/20 bg-[#3A0060] px-4 py-5 md:hidden"
+            className="border-t border-white/20 bg-[#3A0060]/95 backdrop-blur-sm px-4 py-5 md:hidden"
           >
             <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 text-white">
               {links.map((link) => (
