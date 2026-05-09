@@ -323,7 +323,7 @@ function BeforeAfterSlider({ caption, index, beforeSrc, afterSrc }) {
   );
 }
 
-function ProductCardImage({ src, alt, priority = false }) {
+function ProductCardImage({ src, alt, priority = false, sizes }) {
   const [imageSrc, setImageSrc] = useState(src);
 
   return (
@@ -332,10 +332,11 @@ function ProductCardImage({ src, alt, priority = false }) {
       alt={alt}
       fill
       priority={priority}
-      quality={95}
-      sizes="(max-width: 768px) 100vw, 50vw"
+      quality={100}
+      unoptimized
+      sizes={sizes}
       onError={() => setImageSrc("/photos/product_bundle.jpeg")}
-      className="object-contain p-6"
+      className="object-contain p-4"
     />
   );
 }
@@ -543,13 +544,14 @@ export default function HomePage() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                className="editorial-product-card relative overflow-hidden rounded-3xl bg-[#fdf8ff] p-8 shadow-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-3xl before:bg-[radial-gradient(circle_at_50%_0%,rgba(255,0,128,0.07),transparent_70%)]"
+                className="editorial-product-card relative overflow-hidden rounded-3xl bg-transparent p-8"
               >
-                <div className="relative h-[26rem] w-full">
-                  <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority />
+                <div className="relative h-[36rem] w-full bg-white">
+                  <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority sizes="(max-width: 768px) 100vw, 55vw" />
                 </div>
                 <div className="pt-5 text-center">
-                  <h3 className="hero-display text-2xl font-bold tracking-tight text-[#3A0060]">{products[0].name}</h3>
+                  <div className="mx-auto h-px w-12 bg-[#FFD700]" />
+                  <h3 className="hero-display mt-4 text-2xl font-bold tracking-tight text-[#3A0060]">{products[0].name}</h3>
                   <p className="mt-2 text-base font-semibold text-[#FFD700]">{products[0].price}</p>
                   <a
                     href="https://wa.me/27717768306"
@@ -567,13 +569,14 @@ export default function HomePage() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                  className="editorial-product-card relative overflow-hidden rounded-3xl bg-[#fdf8ff] p-8 shadow-sm before:pointer-events-none before:absolute before:inset-0 before:rounded-3xl before:bg-[radial-gradient(circle_at_50%_0%,rgba(255,0,128,0.07),transparent_70%)]"
+                  className="editorial-product-card relative overflow-hidden rounded-3xl bg-transparent p-8"
                 >
-                  <div className="relative h-[20rem] w-full">
-                    <ProductCardImage src={product.image} alt={`${product.name} product image`} />
+                  <div className="relative h-[26rem] w-full bg-white">
+                    <ProductCardImage src={product.image} alt={`${product.name} product image`} sizes="(max-width: 768px) 100vw, 40vw" />
                   </div>
                   <div className="pt-5 text-center">
-                    <h3 className="hero-display text-xl font-bold tracking-tight text-[#3A0060]">{product.name}</h3>
+                    <div className="mx-auto h-px w-12 bg-[#FFD700]" />
+                    <h3 className="hero-display mt-4 text-xl font-bold tracking-tight text-[#3A0060]">{product.name}</h3>
                     <p className="mt-2 text-base font-semibold text-[#FFD700]">{product.price}</p>
                     <a
                       href="https://wa.me/27717768306"
