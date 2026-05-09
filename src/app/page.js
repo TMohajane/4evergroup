@@ -634,13 +634,16 @@ export default function HomePage() {
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200, damping: 18 }}
-              className="relative h-[28rem] overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(26,5,51,0.10)]"
+              className="relative h-[32rem] overflow-hidden rounded-3xl bg-white transition-shadow duration-300 hover:shadow-[0_30px_70px_rgba(212,56,142,0.22)]"
             >
               <Image
                 src="/photos/product_bundle.jpeg"
                 alt="Forever Glow Complete Collection bundle — Facial Moisturizer, Body Butter, and Omega Tissue Oil"
                 fill
-                className="object-cover transition-transform duration-500 hover:scale-105"
+                quality={100}
+                unoptimized
+                className="object-contain transition-transform duration-500 hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
           </motion.div>
