@@ -331,8 +331,10 @@ function ProductCardImage({ src, alt, priority = false }) {
       alt={alt}
       fill
       priority={priority}
+      quality={95}
+      sizes="(max-width: 768px) 100vw, 50vw"
       onError={() => setImageSrc("/photos/product_bundle.jpeg")}
-      className="object-cover transition-transform duration-500 hover:scale-105"
+      className="object-contain p-6"
     />
   );
 }
@@ -439,36 +441,16 @@ export default function HomePage() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
+        className="relative overflow-hidden bg-[#f9f4ff] px-4 py-36 sm:px-8 lg:px-12"
       >
         <motion.div style={{ y: aboutParallax }} className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#FF0080]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-          <div>
-            <h2 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#1a0533]">{aboutCopy.heading}</h2>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">{aboutCopy.intro[0]}</p>
-            <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
-            <h3 className="mt-8 hero-display text-2xl font-semibold text-[#FFD700]">{aboutCopy.sections[0].title}</h3>
-            <p className="mt-4 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
-            <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
-            <h3 className="mt-8 hero-display text-2xl font-semibold text-[#3A0060]">{aboutCopy.sections[1].title}</h3>
-            <p className="mt-4 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
-            <motion.a
-              href="https://wa.me/27717768306"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
-              whileTap={{ scale: 0.97 }}
-              className="mt-10 inline-flex rounded-full border border-[#3A0060] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#FF0080] hover:bg-[#FF0080] hover:text-white"
-            >
-              Order on WhatsApp
-            </motion.a>
-          </div>
           <motion.div
-            whileHover={{ scale: 1.04, rotate: 0 }}
+            whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            className="mx-auto w-full max-w-sm"
+            className="order-1 mx-auto w-full max-w-sm lg:order-2"
           >
-            <div className="relative h-[30rem] w-full overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(26,5,51,0.12)]">
+            <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0">
               <Image
                 src="/photos/hero1.jpg"
                 alt="Founder Ntsako Mabunda"
@@ -477,6 +459,30 @@ export default function HomePage() {
               />
             </div>
           </motion.div>
+          <div className="order-2 lg:order-1">
+            <h2 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#3A0060]">{aboutCopy.heading}</h2>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">{aboutCopy.intro[0]}</p>
+            <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
+            <div className="mt-10 border-l border-[#FFD700] pl-4">
+              <h3 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[0].title}</h3>
+            </div>
+            <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
+            <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
+            <div className="mt-10 border-l border-[#FFD700] pl-4">
+              <h3 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[1].title}</h3>
+            </div>
+            <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
+            <motion.a
+              href="https://wa.me/27717768306"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
+              whileTap={{ scale: 0.97 }}
+              className="mt-12 inline-flex rounded-full bg-[#3A0060] px-10 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-gradient-to-r hover:from-[#ff5cb5] hover:to-[#6f2cff]"
+            >
+              Order on WhatsApp
+            </motion.a>
+          </div>
         </div>
       </motion.section>
 
@@ -504,19 +510,20 @@ export default function HomePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:grid-rows-[18rem_18rem] lg:grid-cols-[1.4fr_1fr] lg:grid-rows-[18rem_18rem]"
+            className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr]"
           >
             <motion.article variants={cardReveal} className="sm:row-span-2">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                className="editorial-product-card relative h-[32rem] overflow-hidden rounded-3xl sm:h-full"
+                className="editorial-product-card rounded-3xl bg-[radial-gradient(circle_at_50%_30%,#f3eaff,#fdf6ff)] p-8 shadow-[0_8px_32px_rgba(58,0,96,0.08)]"
               >
-                <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1a0533]/80 via-[#1a0533]/30 to-transparent p-6">
-                  <p className="text-xs uppercase tracking-[0.18em] text-[#FFD700]">Bestseller</p>
-                  <h3 className="mt-2 hero-display text-2xl font-bold tracking-tight text-white">{products[0].name}</h3>
-                  <p className="mt-1 text-sm font-medium text-white/80">{products[0].price}</p>
+                <div className="relative h-[24rem] w-full">
+                  <ProductCardImage src={products[0].image} alt={`${products[0].name} product image`} priority />
+                </div>
+                <div className="pt-5 text-center">
+                  <h3 className="hero-display text-2xl font-bold tracking-tight text-[#3A0060]">{products[0].name}</h3>
+                  <p className="mt-2 text-base font-semibold text-[#FFD700]">{products[0].price}</p>
                 </div>
               </motion.div>
             </motion.article>
@@ -525,13 +532,14 @@ export default function HomePage() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                  className="editorial-product-card relative h-[18rem] overflow-hidden rounded-3xl sm:h-full"
+                  className="editorial-product-card rounded-3xl bg-[radial-gradient(circle_at_50%_30%,#f3eaff,#fdf6ff)] p-8 shadow-[0_8px_32px_rgba(58,0,96,0.08)]"
                 >
-                  <ProductCardImage src={product.image} alt={`${product.name} product image`} />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1a0533]/80 via-[#1a0533]/30 to-transparent p-6">
-                    <p className="text-xs uppercase tracking-[0.18em] text-[#FFD700]">Product</p>
-                    <h3 className="mt-2 hero-display text-xl font-bold tracking-tight text-white">{product.name}</h3>
-                    <p className="mt-1 text-sm font-medium text-white/80">{product.price}</p>
+                  <div className="relative h-[16rem] w-full">
+                    <ProductCardImage src={product.image} alt={`${product.name} product image`} />
+                  </div>
+                  <div className="pt-5 text-center">
+                    <h3 className="hero-display text-xl font-bold tracking-tight text-[#3A0060]">{product.name}</h3>
+                    <p className="mt-2 text-base font-semibold text-[#FFD700]">{product.price}</p>
                   </div>
                 </motion.div>
               </motion.article>

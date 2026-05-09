@@ -25,28 +25,32 @@ const aboutCopy = {
 
 export default function AboutPage() {
   return (
-    <section className="relative overflow-hidden bg-[#f9f4ff] px-4 py-16 sm:px-8 lg:px-12">
+    <section className="relative overflow-hidden bg-[#f9f4ff] px-4 py-24 sm:px-8 lg:px-12">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <h1 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#1a0533]">{aboutCopy.heading}</h1>
+        <div className="order-2 lg:order-1">
+          <h1 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#3A0060]">{aboutCopy.heading}</h1>
           <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">{aboutCopy.intro[0]}</p>
-          <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
-          <h2 className="mt-8 hero-display text-2xl font-semibold text-[#FFD700]">{aboutCopy.sections[0].title}</h2>
-          <p className="mt-4 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
-          <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
-          <h2 className="mt-8 hero-display text-2xl font-semibold text-[#3A0060]">{aboutCopy.sections[1].title}</h2>
-          <p className="mt-4 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
+          <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
+          <div className="mt-10 border-l border-[#FFD700] pl-4">
+            <h2 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[0].title}</h2>
+          </div>
+          <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
+          <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
+          <div className="mt-10 border-l border-[#FFD700] pl-4">
+            <h2 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[1].title}</h2>
+          </div>
+          <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
           <a
             href="https://wa.me/27717768306"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-flex rounded-full border border-[#3A0060] px-8 py-3 text-sm font-semibold transition-all duration-300 hover:border-[#FF0080] hover:bg-[#FF0080] hover:text-white"
+            className="mt-12 inline-flex rounded-full bg-[#3A0060] px-10 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-gradient-to-r hover:from-[#ff5cb5] hover:to-[#6f2cff]"
           >
             Order on WhatsApp
           </a>
         </div>
-        <div className="mx-auto w-full max-w-sm">
-          <div className="relative h-[30rem] w-full overflow-hidden rounded-3xl shadow-[0_20px_50px_rgba(26,5,51,0.12)]">
+        <div className="order-1 mx-auto w-full max-w-sm lg:order-2">
+          <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0">
             <Image src="/photos/hero1.jpg" alt="Founder Ntsako Mabunda" fill className="object-cover" />
           </div>
         </div>
