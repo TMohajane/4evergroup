@@ -28,16 +28,16 @@ export default function AboutPage() {
     <section className="relative overflow-hidden bg-[#f9f4ff] px-4 py-24 sm:px-8 lg:px-12">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="order-2 lg:order-1">
-          <h1 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#3A0060]">{aboutCopy.heading}</h1>
+          <h1 className="hero-display text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#FF0080]">{aboutCopy.heading}</h1>
           <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">{aboutCopy.intro[0]}</p>
           <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
           <div className="mt-10 border-l border-[#FFD700] pl-4">
-            <h2 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[0].title}</h2>
+            <h2 className="text-base font-medium uppercase tracking-[0.18em] text-[#FF0080]">{aboutCopy.sections[0].title}</h2>
           </div>
           <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
           <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
           <div className="mt-10 border-l border-[#FFD700] pl-4">
-            <h2 className="text-base font-medium uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[1].title}</h2>
+            <h2 className="text-base font-medium uppercase tracking-[0.18em] text-[#FF0080]">{aboutCopy.sections[1].title}</h2>
           </div>
           <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
           <a

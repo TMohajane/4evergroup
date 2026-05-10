@@ -520,17 +520,17 @@ export default function HomePage() {
           </motion.div>
           <div className="order-2 lg:order-1">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Our Story</p>
-            <h2 className="hero-display mt-4 text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#3A0060]">{aboutCopy.heading}</h2>
+            <h2 className="hero-display mt-4 text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#FF0080]">{aboutCopy.heading}</h2>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">{aboutCopy.intro[0]}</p>
             <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.intro[1]}</p>
             <div className="my-8 h-px w-full bg-[#FFD700]/50" />
             <div className="mt-2 border-l border-[#FFD700] pl-4">
-              <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[0].title}</h3>
+              <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-[#FF0080]">{aboutCopy.sections[0].title}</h3>
             </div>
             <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[0]}</p>
             <p className="mt-7 text-lg leading-8 text-gray-600">{aboutCopy.sections[0].paragraphs[1]}</p>
             <div className="mt-10 border-l border-[#FFD700] pl-4">
-              <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-[#FFD700]">{aboutCopy.sections[1].title}</h3>
+              <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-[#FF0080]">{aboutCopy.sections[1].title}</h3>
             </div>
             <p className="mt-5 text-lg leading-8 text-gray-600">{aboutCopy.sections[1].paragraphs[0]}</p>
             <motion.a
@@ -708,7 +708,7 @@ export default function HomePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            className="mt-12 grid gap-6 sm:grid-cols-2"
           >
             {[
               { src: "/photos/model1.jpeg", alt: "Collien Ntsako Mabunda — glowing skin close-up 1" },
@@ -723,7 +723,7 @@ export default function HomePage() {
                 transition={{ type: "spring", stiffness: 220, damping: 20 }}
                 className="relative overflow-hidden rounded-3xl bg-white shadow-[0_8px_32px_rgba(58,0,96,0.08)]"
               >
-                <div className="relative h-[22rem] w-full">
+                <div className="relative h-[28rem] w-full">
                   <Image
                     src={photo.src}
                     alt={photo.alt}
@@ -731,10 +731,6 @@ export default function HomePage() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover object-top transition-transform duration-500 hover:scale-105"
                   />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1a0533]/80 to-transparent p-4">
-                  <p className="hero-display text-sm font-semibold text-white">Collien Ntsako Mabunda</p>
-                  <p className="text-xs font-medium tracking-[0.12em] text-[#FFD700]">Founder & CEO</p>
                 </div>
               </motion.div>
             ))}
