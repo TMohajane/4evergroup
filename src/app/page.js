@@ -767,7 +767,7 @@ export default function HomePage() {
                     <p className="mt-1 text-sm leading-7 text-gray-600">We recommend using the Face Moisturizer on its own during the day to avoid excess shine. You can still enjoy the restorative benefits of the Omega Tissue Oil by applying it as part of your nighttime routine.</p>
                   </div>
                   <div className="border-l-2 border-[#FF0080] pl-4">
-                    <p className="font-semibold text-[#3A0060]">☀️ Sun Protection</p>
+                    <p className="font-semibold text-[#3A0060]"><span aria-hidden="true">☀️ </span>Sun Protection</p>
                     <p className="mt-1 text-sm leading-7 text-gray-600">Always finish your morning routine with a high-quality sunscreen. We highly recommend an SPF 50 to protect your skin from damage and maintain your results.</p>
                   </div>
                 </div>
