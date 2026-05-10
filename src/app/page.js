@@ -513,6 +513,10 @@ export default function HomePage() {
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
+            <div className="mt-4 text-center">
+              <p className="hero-display text-lg font-bold text-[#3A0060]">Collien Ntsako Mabunda</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FF0080]">Founder & CEO</p>
+            </div>
           </motion.div>
           <div className="order-2 lg:order-1">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Our Story</p>
@@ -682,6 +686,110 @@ export default function HomePage() {
               />
             </motion.div>
           </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="the-look"
+        variants={sectionReveal}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="bg-[#f9f4ff] px-4 py-32 sm:px-8 lg:px-12"
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">The Glow in Action</p>
+          <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">The Look</h2>
+          <p className="mt-4 max-w-2xl text-lg text-[#3A0060]">Real results on real skin — see how ForeverGlow works on our founder.</p>
+
+          {/* Photo Grid */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {[
+              { src: "/photos/model1.jpeg", alt: "Collien Ntsako Mabunda — glowing skin close-up 1" },
+              { src: "/photos/model2.jpeg", alt: "Collien Ntsako Mabunda — glowing skin close-up 2" },
+              { src: "/photos/model3.jpeg", alt: "Collien Ntsako Mabunda holding ForeverGlow product" },
+              { src: "/photos/model4.jpeg", alt: "Collien Ntsako Mabunda showcasing ForeverGlow product" },
+            ].map((photo) => (
+              <motion.div
+                key={photo.src}
+                variants={cardReveal}
+                whileHover={{ scale: 1.03, boxShadow: "0 16px 48px rgba(58,0,96,0.14)" }}
+                transition={{ type: "spring", stiffness: 220, damping: 20 }}
+                className="relative overflow-hidden rounded-3xl bg-white shadow-[0_8px_32px_rgba(58,0,96,0.08)]"
+              >
+                <div className="relative h-[22rem] w-full">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover object-top transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1a0533]/80 to-transparent p-4">
+                  <p className="hero-display text-sm font-semibold text-white">Collien Ntsako Mabunda</p>
+                  <p className="text-xs font-medium tracking-[0.12em] text-[#FFD700]">Founder & CEO</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* How to Use Instructions */}
+          <div className="mt-20">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Step by Step</p>
+            <h3 className="mt-4 hero-display text-[clamp(1.8rem,3.6vw,3rem)] font-bold tracking-tight text-[#1a0533]">How to Use Your ForeverGlow Routine</h3>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              {/* Face Section */}
+              <div className="rounded-3xl bg-white p-8 shadow-[0_8px_32px_rgba(58,0,96,0.08)]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#3A0060] to-[#FF0080]">
+                    <LeafIcon />
+                  </div>
+                  <h4 className="hero-display text-xl font-bold text-[#3A0060]">For the Face</h4>
+                </div>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#FF0080]">The Ultimate Glow Combination</p>
+                <p className="mt-4 text-sm leading-7 text-gray-600">Our signature routine is designed to provide deep hydration and lasting protection.</p>
+
+                <div className="mt-6 space-y-5">
+                  <div className="border-l-2 border-[#FFD700] pl-4">
+                    <p className="font-semibold text-[#3A0060]">For Dry Skin</p>
+                    <p className="mt-1 text-sm leading-7 text-gray-600">Take a small amount of the ForeverGlow Face Moisturizer and add a spray of Omega Tissue Oil to the palm of your hand. Mix them together and apply evenly to the face for an ultra-nourished finish.</p>
+                  </div>
+                  <div className="border-l-2 border-[#FFD700] pl-4">
+                    <p className="font-semibold text-[#3A0060]">For Oily Skin</p>
+                    <p className="mt-1 text-sm leading-7 text-gray-600">We recommend using the Face Moisturizer on its own during the day to avoid excess shine. You can still enjoy the restorative benefits of the Omega Tissue Oil by applying it as part of your nighttime routine.</p>
+                  </div>
+                  <div className="border-l-2 border-[#FF0080] pl-4">
+                    <p className="font-semibold text-[#3A0060]">☀️ Sun Protection</p>
+                    <p className="mt-1 text-sm leading-7 text-gray-600">Always finish your morning routine with a high-quality sunscreen. We highly recommend an SPF 50 to protect your skin from damage and maintain your results.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Body Section */}
+              <div className="rounded-3xl bg-white p-8 shadow-[0_8px_32px_rgba(58,0,96,0.08)]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#3A0060] to-[#FF0080]">
+                    <DropIcon />
+                  </div>
+                  <h4 className="hero-display text-xl font-bold text-[#3A0060]">For the Body</h4>
+                </div>
+                <div className="mt-6">
+                  <div className="border-l-2 border-[#FFD700] pl-4">
+                    <p className="font-semibold text-[#3A0060]">Lock in Moisture</p>
+                    <p className="mt-1 text-sm leading-7 text-gray-600">After bathing, apply the ForeverGlow Body Butter to damp skin to lock in moisture and keep your skin soft and glowing all day, regardless of the season.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </motion.section>
 
