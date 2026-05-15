@@ -50,11 +50,11 @@ export default function AboutPage() {
           </a>
         </div>
         <div className="order-1 mx-auto w-full max-w-sm lg:order-2">
-          <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0">
+          <div className="relative h-[30rem] w-full overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)]">
             <Image src="/photos/hero1.jpg" alt="Founder Ntsako Mabunda" fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" />
           </div>
           <div className="mt-4 text-center">
-            <p className="hero-display text-lg font-bold text-[#3A0060]">Collien Ntsako Mabunda</p>
+            <p className="hero-display text-lg font-bold text-[#FF0080]">Collien Ntsako Mabunda</p>
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FF0080]">Founder & CEO</p>
           </div>
         </div>

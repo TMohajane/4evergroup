@@ -395,17 +395,15 @@ export default function HomePage() {
 
     const timer = setInterval(() => {
       setDirection(1);
-      setActiveTestimonial((current) => (current + 1) % testimonials.length);
-    }, 6000);
+      setActiveTestimonial((current) => (current + 1) % 25);
+    }, 4000);
     return () => clearInterval(timer);
   }, [isAutoPlay]);
 
   const paginate = (nextDirection) => {
     setDirection(nextDirection);
-    setActiveTestimonial((current) => (current + nextDirection + testimonials.length) % testimonials.length);
+    setActiveTestimonial((current) => (current + nextDirection + 25) % 25);
   };
-
-  const activeItem = testimonials[activeTestimonial];
 
   return (
     <motion.div
@@ -499,12 +497,8 @@ export default function HomePage() {
       >
         <motion.div style={{ y: aboutParallax }} className="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[#FF0080]/10 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            className="order-1 mx-auto w-full max-w-sm lg:order-2"
-          >
-            <div className="relative h-[30rem] w-full motion-safe:-rotate-2 overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] transition-transform duration-500 motion-safe:hover:rotate-0 ring-4 ring-[#FFD700]/40 ring-offset-4 ring-offset-[#f9f4ff]">
+          <div className="order-1 mx-auto w-full max-w-sm lg:order-2">
+            <div className="relative h-[30rem] w-full overflow-hidden rounded-[2rem] shadow-[0_22px_42px_rgba(58,0,96,0.16)] ring-4 ring-[#FFD700]/40 ring-offset-4 ring-offset-[#f9f4ff]">
               <Image
                 src="/photos/hero1.jpg"
                 alt="Founder Ntsako Mabunda"
@@ -517,7 +511,7 @@ export default function HomePage() {
               <p className="hero-display text-lg font-bold text-[#3A0060]">Collien Ntsako Mabunda</p>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FF0080]">Founder & CEO</p>
             </div>
-          </motion.div>
+          </div>
           <div className="order-2 lg:order-1">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Our Story</p>
             <h2 className="hero-display mt-4 text-[clamp(2.4rem,5vw,4.8rem)] font-bold leading-[1.02] tracking-tight text-[#FF0080]">{aboutCopy.heading}</h2>
@@ -846,41 +840,34 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Client Stories</p>
           <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">What Our Clients Say</h2>
           <div className="mt-12 rounded-3xl border border-[#FF0080]/20 bg-[#3A0060] p-8 text-white shadow-[0_22px_60px_rgba(58,0,96,0.4)] sm:p-10">
-            <div className="relative overflow-hidden">
+            {/* Screenshot display */}
+            <div className="relative flex justify-center overflow-hidden">
               <AnimatePresence mode="wait" custom={direction}>
-                <motion.article
-                  key={activeItem.name}
+                <motion.div
+                  key={activeTestimonial}
                   custom={direction}
                   variants={carouselVariants}
                   initial="enter"
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.42, ease: "easeOut" }}
+                  className="w-full max-w-sm"
                 >
-                  <QuoteIcon />
-                  <div className="mt-5 flex gap-1" aria-label="5 star rating">
-                    {Array.from({ length: 5 }).map((_, starIndex) => (
-                      <StarIcon key={starIndex} />
-                    ))}
+                  <div className="relative w-full overflow-hidden rounded-2xl bg-white shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                    <Image
+                      src={`/photos/r${activeTestimonial + 1}.jpeg`}
+                      alt={`Client WhatsApp review ${activeTestimonial + 1}`}
+                      width={400}
+                      height={600}
+                      className="h-auto w-full object-contain"
+                      sizes="(max-width: 640px) 100vw, 400px"
+                    />
                   </div>
-                  <p className="mt-6 text-xl italic leading-9 text-white">“{activeItem.quote}”</p>
-                  <div className="mt-8 flex items-center gap-4">
-                    <div className={`flex h-14 w-14 items-center justify-center rounded-full text-sm font-semibold text-white ring-2 ring-[#FFD700]/60 ${activeItem.tint}`}>
-                      {activeItem.name
-                        .split(" ")
-                        .filter(Boolean)
-                        .map((part) => part[0])
-                        .join("")}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white">{activeItem.name}</p>
-                      <p className="text-sm text-[#FFD700]">Forever Glow Client</p>
-                    </div>
-                  </div>
-                </motion.article>
+                </motion.div>
               </AnimatePresence>
             </div>
 
+            {/* Controls */}
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <button
@@ -895,7 +882,7 @@ export default function HomePage() {
                   type="button"
                   onClick={() => paginate(-1)}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#FF0080] hover:text-[#FF0080]"
-                  aria-label="Previous testimonial"
+                  aria-label="Previous screenshot"
                 >
                   <ChevronLeftIcon />
                 </button>
@@ -903,28 +890,32 @@ export default function HomePage() {
                   type="button"
                   onClick={() => paginate(1)}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white transition hover:border-[#FF0080] hover:text-[#FF0080]"
-                  aria-label="Next testimonial"
+                  aria-label="Next screenshot"
                 >
                   <ChevronRightIcon />
                 </button>
               </div>
-              <div className="flex items-center gap-2">
-                {testimonials.map((item, index) => (
+              {/* Dot indicators — show max 10 dots to avoid overflow */}
+              <div className="flex max-w-[16rem] flex-wrap items-center justify-end gap-1.5">
+                {Array.from({ length: 25 }).map((_, index) => (
                   <button
-                    key={item.name}
+                    key={index}
                     type="button"
                     onClick={() => {
                       setDirection(index > activeTestimonial ? 1 : -1);
                       setActiveTestimonial(index);
                     }}
                     className={`h-2 rounded-full transition-all ${
-                      index === activeTestimonial ? "w-8 bg-[#FF0080]" : "w-2 bg-white/40 hover:bg-white/70"
+                      index === activeTestimonial ? "w-6 bg-[#FF0080]" : "w-2 bg-white/40 hover:bg-white/70"
                     }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
+                    aria-label={`Go to screenshot ${index + 1}`}
                   />
                 ))}
               </div>
             </div>
+
+            {/* Counter */}
+            <p className="mt-4 text-center text-sm text-white/60">{activeTestimonial + 1} / 25</p>
           </div>
         </div>
       </motion.section>
