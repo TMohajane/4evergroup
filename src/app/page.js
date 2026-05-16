@@ -684,6 +684,88 @@ export default function HomePage() {
       </motion.section>
 
       <motion.section
+        id="reseller"
+        variants={sectionReveal}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="bg-white px-4 py-32 sm:px-8 lg:px-12"
+      >
+        <div className="mx-auto w-full max-w-7xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FF0080]">Wholesale Opportunities</p>
+          <h2 className="mt-4 hero-display text-[clamp(2.1rem,4.6vw,4rem)] font-bold tracking-tight text-[#1a0533]">Reseller &amp; Bulk Buying</h2>
+          <p className="mt-4 max-w-3xl text-lg text-[#3A0060]">
+            Buying 10 or more ForeverGlow products qualifies you for discounted bulk pricing. Resellers can set their own prices for their market, and
+            you can WhatsApp us anytime for a personalised quote.
+          </p>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mt-12 grid gap-6 md:grid-cols-3"
+          >
+            {[
+              {
+                title: "Buy in Bulk",
+                copy: "Order 10 or more products and unlock discounted wholesale pricing for your bulk purchase.",
+              },
+              {
+                title: "Set Your Own Prices",
+                copy: "Resellers choose their own selling prices based on the needs of their target market.",
+              },
+              {
+                title: "Request a Quote",
+                copy: "WhatsApp us for a personalised bulk or reseller quote tailored to the products you need.",
+              },
+            ].map((item) => (
+              <motion.article
+                key={item.title}
+                variants={cardReveal}
+                whileHover={{ y: -4, boxShadow: "0 16px 48px rgba(58,0,96,0.14)" }}
+                className="rounded-3xl border border-[#FFD700]/30 bg-[#f9f4ff] p-8 shadow-[0_8px_32px_rgba(58,0,96,0.08)]"
+              >
+                <div className="inline-flex rounded-full bg-[#FFD700]/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#FF0080]">
+                  ForeverGlow
+                </div>
+                <h3 className="mt-6 hero-display text-2xl font-bold tracking-tight text-[#1a0533]">{item.title}</h3>
+                <p className="mt-4 text-base leading-7 text-[#3A0060]">{item.copy}</p>
+              </motion.article>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={cardReveal}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="mt-12 rounded-[2rem] bg-[#1a0533] p-8 shadow-[0_24px_80px_rgba(26,5,51,0.28)] sm:p-10"
+          >
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#FFD700]">Get a custom quote</p>
+                <h3 className="mt-3 hero-display text-[clamp(1.8rem,3.6vw,3rem)] font-bold tracking-tight text-white">Ready to buy in bulk or become a reseller?</h3>
+                <p className="mt-4 text-base leading-7 text-white/80">
+                  Message us on WhatsApp for reseller pricing, bulk discounts on 10+ products, and a quote based on what you want to order.
+                </p>
+              </div>
+              <motion.a
+                href="https://wa.me/27717768306?text=Hi%2C%20I%27m%20interested%20in%20bulk%20%2F%20reseller%20pricing%20for%20ForeverGlow%20products"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,56,142,0.45)" }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex w-fit rounded-full border-none bg-gradient-to-r from-[#FF0080] to-[#3A0060] px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:opacity-90"
+              >
+                WhatsApp for a quote
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section
         id="the-look"
         variants={sectionReveal}
         initial="hidden"
