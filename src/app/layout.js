@@ -139,6 +139,7 @@ export default function RootLayout({ children }) {
                     {[
                       { href: "#about", label: "About" },
                       { href: "#products", label: "Products" },
+                      { href: "#reseller", label: "Resellers" },
                       { href: "#ingredients", label: "Ingredients" },
                       { href: "#the-look", label: "The Look" },
                       { href: "#order", label: "How to Order" },
